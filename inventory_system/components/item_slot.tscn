@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b40fe4aoj33xn"]
+
+[ext_resource type="PackedScene" uid="uid://cgkibc6bdy1sb" path="res://components/item_tile.tscn" id="1_vyhbw"]
+
+[node name="ItemSlot" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+
+[node name="ItemTile" parent="." instance=ExtResource("1_vyhbw")]
+layout_mode = 2
