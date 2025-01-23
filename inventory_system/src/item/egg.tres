@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://2q2ksjqs385v"]
+
+[ext_resource type="Texture2D" uid="uid://dohm4kmm02is8" path="res://assets/egg.png" id="1_8xh5t"]
+[ext_resource type="Script" path="res://src/item/item.gd" id="1_hwrwq"]
+
+[resource]
+script = ExtResource("1_hwrwq")
+name = "egg"
+icon = ExtResource("1_8xh5t")
+description = "这是一个鸡蛋"
+category = 3
+max_quantity = 10
+quantity = 0
+weight = 0
+attribute = {}

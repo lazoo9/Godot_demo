@@ -5,7 +5,7 @@ extends Node
 var MAX_SLOT_SIZE = 20
 @export var Items: Array[Item] = []
 # 道具变化时发出的信号
-signal items_change
+signal item_change
 
 func _ready() -> void:
 	Items.resize(MAX_SLOT_SIZE)
@@ -17,42 +17,59 @@ func get_empty_index() -> int:
 			return i
 	return -1
 
+func get_items_size() -> int:
+	return len(Items)
+
 func add_item(item: Item) -> bool:
 	var empty_index = get_empty_index()
 	if empty_index == -1:
 		return false
 	Items[empty_index] = item
-	items_change.emit()
+	item_change.emit()
 	return true
 
 func delete_item(index: int) -> void:
 	if Items[index] != null:
 		Items[index] = null
-		items_change.emit()
+		item_change.emit()
 
 func get_item(index: int) -> Item:
 	return Items[index]
 
+# 获取相同种类的物品
+func get_similar_category_items(category: int) -> Array[Item]:
+	var tmp_items = Items.duplicate()
+	if category == 0:
+		return tmp_items
+	var filter_items: Array[Item] = tmp_items.filter(
+		func(i):
+			if i == null: return false
+			return i.category == category
+	)
+	filter_items.resize(MAX_SLOT_SIZE)
+	return filter_items
+
+# 整理物品
 func packet_items() -> void:
 	merge_similar_items()
-	sort_items_by_type()
-	items_change.emit()
+	sort_items_by_categoty()
+	item_change.emit()
 
 func merge_similar_items() -> void:
 	var tmp_items = Items.duplicate()
 	var size = len(tmp_items)
 	for i in range(size):
-		if Items[i] == null or Items[i].is_max_quantity():
+		if tmp_items[i] == null or tmp_items[i].is_max_quantity():
 			continue
 		for j in range(i+1, size):
-			if Items[j] != null and Items[j].can_item_merge(Items[j]):
-				Items[i].merge_quantity(Items[j])
-				if Items[j].quantity <= 0:
-					Items[j] = null
+			if tmp_items[j] != null and tmp_items[j].can_item_merge(tmp_items[j]):
+				tmp_items[i].merge_quantity(tmp_items[j])
+				if tmp_items[j].quantity <= 0:
+					tmp_items[j] = null
 	Items = tmp_items.filter(func(i): return i != null)
 	Items.resize(MAX_SLOT_SIZE)
 
-func sort_items_by_type() -> void:
+func sort_items_by_categoty() -> void:
 	var tmp_items = Items.duplicate()
 	var size = len(tmp_items)
 	tmp_items = tmp_items.filter(func(i): return i != null)

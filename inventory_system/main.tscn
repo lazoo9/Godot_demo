@@ -1,3 +1,54 @@
-[gd_scene format=3 uid="uid://bwcvlktredk2k"]
+[gd_scene load_steps=5 format=3 uid="uid://bwcvlktredk2k"]
 
-[node name="Main" type="Node2D"]
+[ext_resource type="Script" path="res://main.gd" id="1_dx651"]
+[ext_resource type="Script" path="res://src/C_Inventory.gd" id="1_ifxq5"]
+[ext_resource type="PackedScene" uid="uid://d126sg3v0flu8" path="res://components/inventory.tscn" id="2_geg7s"]
+[ext_resource type="Texture2D" uid="uid://cgt0xspj6hxoc" path="res://icon.svg" id="3_5ph6y"]
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("player", "texture_btn", "inventory", "line_edit", "submit_btn")]
+script = ExtResource("1_dx651")
+player = NodePath("Player")
+texture_btn = NodePath("CanvasLayer/TextureButton")
+inventory = NodePath("CanvasLayer/Inventory")
+line_edit = NodePath("CanvasLayer/G_VM/HBoxContainer/LineEdit")
+submit_btn = NodePath("CanvasLayer/G_VM/HBoxContainer/SubmitButton")
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="C_Inventory" type="Node" parent="Player"]
+script = ExtResource("1_ifxq5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("3_5ph6y")
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("2_geg7s")]
+
+[node name="G_VM" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/G_VM"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/G_VM/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "请输入指令"
+
+[node name="SubmitButton" type="Button" parent="CanvasLayer/G_VM/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "提交"
+
+[connection signal="pressed" from="CanvasLayer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="text_submitted" from="CanvasLayer/G_VM/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="CanvasLayer/G_VM/HBoxContainer/SubmitButton" to="." method="_on_submit_button_pressed"]

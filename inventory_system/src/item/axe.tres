@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cuo5o3r7k6ih4"]
+
+[ext_resource type="Script" path="res://src/item/item.gd" id="1_ow6bb"]
+[ext_resource type="Texture2D" uid="uid://24yafrox1m5d" path="res://assets/axe.png" id="1_q2qr4"]
+
+[resource]
+script = ExtResource("1_ow6bb")
+name = "斧子"
+icon = ExtResource("1_q2qr4")
+description = "这是一把斧子"
+category = 1
+max_quantity = 1
+quantity = 0
+weight = 0
+attribute = {}

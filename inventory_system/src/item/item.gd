@@ -6,7 +6,7 @@ enum ITEM_TYPE {
 	NONE,
 	EQUPIMENT,
 	MATERIAL,
-	FOOD,
+	CONSUMABLE,
 }
 
 @export var name: String = "物品名称"
@@ -27,7 +27,7 @@ func is_max_quantity() -> bool:
 	return self.quantity >= self.max_quantity
 
 func can_item_merge(other_item: Item) -> bool:
-	return self.item == other_item.name
+	return self.name == other_item.name
 
 func merge_quantity(other_item: Item) -> void:
 	var sum_quantity = self.quantity + other_item.quantity

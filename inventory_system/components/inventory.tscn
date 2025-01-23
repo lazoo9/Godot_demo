@@ -1,0 +1,149 @@
+[gd_scene load_steps=3 format=3 uid="uid://d126sg3v0flu8"]
+
+[ext_resource type="PackedScene" uid="uid://b40fe4aoj33xn" path="res://components/item_slot.tscn" id="1_3ywp0"]
+[ext_resource type="Script" path="res://components/inventory.gd" id="1_8q7yp"]
+
+[node name="Inventory" type="MarginContainer" node_paths=PackedStringArray("close_btn", "switch_tab_bar", "grid_container", "drop_btn", "packet_btn")]
+offset_right = 276.0
+offset_bottom = 310.0
+script = ExtResource("1_8q7yp")
+close_btn = NodePath("MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CloseButton")
+switch_tab_bar = NodePath("MarginContainer/VBoxContainer/MarginContainer2/SwitchTabBar")
+grid_container = NodePath("MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer")
+drop_btn = NodePath("MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer/DropButton")
+packet_btn = NodePath("MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer/PacketButton")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "目录"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "X"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SwitchTabBar" type="TabBar" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+current_tab = 0
+tab_count = 4
+tab_0/title = "全部"
+tab_1/title = "装备"
+tab_2/title = "材料"
+tab_3/title = "消耗品"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer"]
+layout_mode = 2
+columns = 4
+
+[node name="ItemSlot" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="ItemSlot4" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="ItemSlot5" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="ItemSlot6" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="ItemSlot7" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="ItemSlot8" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="ItemSlot9" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="ItemSlot10" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="ItemSlot11" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="ItemSlot12" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="ItemSlot13" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="ItemSlot14" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="ItemSlot15" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="ItemSlot16" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="ItemSlot17" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="ItemSlot18" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="ItemSlot19" parent="MarginContainer/VBoxContainer/MarginContainer3/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3ywp0")]
+layout_mode = 2
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4"]
+layout_mode = 2
+
+[node name="DropButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "丢弃"
+
+[node name="PacketButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "整理"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="tab_changed" from="MarginContainer/VBoxContainer/MarginContainer2/SwitchTabBar" to="." method="_on_switch_tab_bar_tab_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer/DropButton" to="." method="_on_drop_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer/PacketButton" to="." method="_on_packet_button_pressed"]

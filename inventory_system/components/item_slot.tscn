@@ -1,13 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://b40fe4aoj33xn"]
+[gd_scene load_steps=3 format=3 uid="uid://b40fe4aoj33xn"]
 
+[ext_resource type="Script" path="res://components/item_slot.gd" id="1_8mpf0"]
 [ext_resource type="PackedScene" uid="uid://cgkibc6bdy1sb" path="res://components/item_tile.tscn" id="1_vyhbw"]
 
-[node name="ItemSlot" type="MarginContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ItemSlot" type="MarginContainer" node_paths=PackedStringArray("color_rect", "item_tile")]
+offset_right = 138.0
+offset_bottom = 138.0
+script = ExtResource("1_8mpf0")
+color_rect = NodePath("ColorRect")
+item_tile = NodePath("ItemTile")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
+color = Color(0, 0, 0, 1)
 
 [node name="ItemTile" parent="." instance=ExtResource("1_vyhbw")]
 layout_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
