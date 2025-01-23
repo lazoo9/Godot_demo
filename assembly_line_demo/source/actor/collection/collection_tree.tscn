@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfy4q3ebl8j8j"]
+
+[ext_resource type="PackedScene" uid="uid://c3j8qj7r7epgo" path="res://source/actor/collection/collection.tscn" id="1_5r54b"]
+[ext_resource type="Texture2D" uid="uid://c0ljav3xv3wm0" path="res://assets/tree.png" id="2_177ir"]
+[ext_resource type="PackedScene" uid="uid://dtk2s2fi5rno5" path="res://source/actor/item/drop_item_wood.tscn" id="2_tncpp"]
+
+[node name="CollectionTree" instance=ExtResource("1_5r54b")]
+drop_item_scene = ExtResource("2_tncpp")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -11)
+texture = ExtResource("2_177ir")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, -9)

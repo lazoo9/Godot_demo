@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3j8qj7r7epgo"]
+
+[ext_resource type="Script" path="res://source/actor/collection/collection.gd" id="1_cddhn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4vssp"]
+radius = 4.0
+height = 18.0
+
+[sub_resource type="Animation" id="Animation_wrlyy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o8efr"]
+resource_name = "die"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_fvnka"]
+resource_name = "spawn"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lcqe7"]
+_data = {
+"RESET": SubResource("Animation_wrlyy"),
+"die": SubResource("Animation_o8efr"),
+"spawn": SubResource("Animation_fvnka")
+}
+
+[node name="Collection" type="Node2D" groups=["Collection"]]
+script = ExtResource("1_cddhn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_4vssp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lcqe7")
+}
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

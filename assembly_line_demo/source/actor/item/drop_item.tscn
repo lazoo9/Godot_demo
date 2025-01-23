@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://clcjbu77xcld"]
+
+[ext_resource type="Script" path="res://source/actor/item/drop_item.gd" id="1_b2gtq"]
+[ext_resource type="Resource" uid="uid://cu81obc6senq1" path="res://source/actor/item/wood.tres" id="2_io7jg"]
+
+[node name="DropItem" type="Node2D"]
+script = ExtResource("1_b2gtq")
+item = ExtResource("2_io7jg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

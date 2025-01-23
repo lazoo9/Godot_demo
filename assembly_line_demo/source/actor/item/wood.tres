@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cu81obc6senq1"]
+
+[ext_resource type="Texture2D" uid="uid://cyhrkpyf1gc4t" path="res://icon.svg" id="1_m1sd5"]
+[ext_resource type="Script" path="res://source/actor/item/item.gd" id="1_tw0cj"]
+
+[resource]
+script = ExtResource("1_tw0cj")
+name = "wood"
+icon = ExtResource("1_m1sd5")
+max_quantity = 20
+quantity = 0

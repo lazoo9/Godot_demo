@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://8vi7pvdt1pf0"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_01lj5"]
+[ext_resource type="Texture2D" uid="uid://ddtwbldla8gxp" path="res://assets/grass_plant.png" id="1_ps5r4"]
+[ext_resource type="Script" path="res://source/scene/camera_2d.gd" id="3_aiuhl"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g0f03"]
+texture = ExtResource("1_ps5r4")
+0:0/0 = 0
+1:0/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_igc7g"]
+sources/0 = SubResource("TileSetAtlasSource_g0f03")
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_01lj5")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_igc7g")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(288, 162)
+script = ExtResource("3_aiuhl")
