@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2vib6cidr55y"]
+
+[ext_resource type="Script" uid="uid://cji2d25208616" path="res://scripts/room/base_room.gd" id="1_43ixu"]
+
+[node name="BaseRoom" type="Node2D"]
+script = ExtResource("1_43ixu")
+
+[node name="Tiles" type="Node2D" parent="."]
+
+[node name="Ground" type="TileMapLayer" parent="Tiles"]
+
+[node name="Wall" type="TileMapLayer" parent="Tiles"]
+
+[node name="Placement" type="TileMapLayer" parent="Tiles"]
+
+[node name="EntryPoints" type="Node2D" parent="."]
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="EnemySpawnPoints" type="Node2D" parent="."]
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2

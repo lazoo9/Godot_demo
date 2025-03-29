@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs2kif0m20erp"]
+
+[ext_resource type="PackedScene" uid="uid://d12b3iioijffy" path="res://scenes/character/character.tscn" id="1_lk0iw"]
+[ext_resource type="Script" uid="uid://ce3o34mq4drna" path="res://scripts/character/enemy/enemy.gd" id="2_735o0"]
+
+[node name="Enemy" instance=ExtResource("1_lk0iw")]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("2_735o0")
+max_hp = 4
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="4"]
+target_desired_distance = 14.0
+path_postprocessing = 1
