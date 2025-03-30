@@ -20,13 +20,11 @@ func _ready() -> void:
 
 func on_body_entered(body: Node2D) -> void:
 	if is_instance_valid(body) and body.has_method("take_damage"):
-		#body.take_damage(damage, knock_direction, knock_force)
 		take_damage(body)
 		player_enter = true
 		timer.start()
 
-func on_body_exited(body: Node2D) -> void:
-	print(body)
+func on_body_exited(_body: Node2D) -> void:
 	player_enter = false
 	timer.stop()
 

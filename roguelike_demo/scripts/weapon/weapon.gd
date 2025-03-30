@@ -39,7 +39,9 @@ func is_busy() -> bool:
 	return false
 
 func drop(cur_pos: Vector2) -> void:
-	tween = get_tree().create_tween()
+	if tween and tween.is_valid():
+		tween.kill()
+	tween = create_tween().bind_node(self)
 	print(tween)
 	tween.finished.connect(on_tween_finished)
 	tween.tween_property(self, "global_position", cur_pos, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
@@ -57,4 +59,8 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 	else:
 		print(tween)
 		player_detector.monitoring = true
-		tween.stop()
+		if not tween.is_valid():
+			print("invalid")
+		if tween and tween.is_valid():
+			print("stop")
+			tween.stop()
