@@ -9,6 +9,7 @@ class_name Character
 @export var flyable: bool = false
 
 var move_direction: Vector2 = Vector2.ZERO
+var hit_effect_scene: PackedScene = preload("res://scenes/effect/hit_effect.tscn")
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
@@ -19,3 +20,7 @@ func move(_delta: float) -> void:
 
 func take_damage(_damage: int, _knock_dirention: Vector2, _knock_force: int) -> void:
 	pass
+
+func spawn_hit_effect() -> void:
+	var effect = hit_effect_scene.instantiate() as HitEffect
+	add_child(effect)

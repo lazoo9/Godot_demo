@@ -18,7 +18,7 @@ tile_set = ExtResource("1_tbgi4")
 position = Vector2(231, 199)
 
 [node name="Player" parent="." instance=ExtResource("2_0wfyh")]
-position = Vector2(236, 238)
+position = Vector2(148, 199)
 
 [node name="UI" type="CanvasLayer" parent="."]
 

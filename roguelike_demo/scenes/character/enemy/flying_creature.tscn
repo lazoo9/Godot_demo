@@ -248,6 +248,8 @@ metadata/_custom_type_script = "uid://bpbcuy66iyp78"
 shape = SubResource("CircleShape2D_njb8y")
 debug_color = Color(0.882133, 0.271151, 0.512038, 0.42)
 
+[node name="Timer" type="Timer" parent="Body/Sprite2D/HitBox" index="1"]
+
 [node name="AnimationPlayer" parent="." index="3"]
 libraries = {
 &"": SubResource("AnimationLibrary_0sgbr")

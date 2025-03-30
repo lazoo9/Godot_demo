@@ -1,7 +1,6 @@
 extends HitBox
 class_name ThrowableKnife
 
-@onready var player: Player = get_tree().current_scene.get_node("Player")
 @export var speed: int = 80
 var dir: Vector2 = Vector2.ZERO
 

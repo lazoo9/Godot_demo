@@ -10,6 +10,7 @@ enum SWITCH_DIR {
 @onready var state_machine: Node = $StateMachine
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var weapons: Node2D = $Body/Weapons
+@onready var dust_timer: Timer = $DustTimer
 
 @export var max_hp: int = 4
 var cur_hp: int = 0:
@@ -17,6 +18,7 @@ var cur_hp: int = 0:
 		cur_hp = value
 		hp_change.emit(cur_hp, max_hp)
 var current_weapon: Weapon
+var dust_scene: PackedScene = preload("res://scenes/effect/dust.tscn")
 
 signal hp_change(cur_hp: int, max_hp: int)                                                                                                                                                                                                             
 
@@ -102,7 +104,6 @@ func drop_weapon() -> void:
 	var drop_dir = global_position.direction_to(get_global_mouse_position())
 	weapon.global_position = global_position
 	weapon.drop(global_position + drop_dir * 50)
-	#weapon.global_position += drop_dir * 50
 
 func take_damage(damage: int, knock_dirention: Vector2, knock_force: int) -> void:
 	velocity = Vector2.ZERO
@@ -113,3 +114,22 @@ func take_damage(damage: int, knock_dirention: Vector2, knock_force: int) -> voi
 	else:
 		state_machine.set_state(state_machine.states.death)
 		velocity = knock_dirention * knock_force * 2
+
+func is_hurting() -> bool:
+	if animation_player.is_playing() and animation_player.current_animation == "hurt":
+		return true
+	return false
+
+func is_dead() -> bool:
+	if cur_hp > 0:
+		return false
+	return true
+
+func spawn_dust() -> void:
+	var dust = dust_scene.instantiate() as Dust
+	dust.global_position = global_position + Vector2.DOWN * 4
+	dust.flip_h = sprite_2d.flip_h
+	get_tree().current_scene.add_child(dust)
+
+func _on_dust_timer_timeout() -> void:
+	spawn_dust()

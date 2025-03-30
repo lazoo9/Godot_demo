@@ -7,6 +7,7 @@ class_name Weapon
 @onready var player_detector: Area2D = $PlayerDetector
 
 @export var is_on_floor: bool = true
+var tween: Tween
 
 func _ready() -> void:
 	if not is_on_floor:
@@ -38,7 +39,8 @@ func is_busy() -> bool:
 	return false
 
 func drop(cur_pos: Vector2) -> void:
-	var tween = get_tree().create_tween()
+	tween = get_tree().create_tween()
+	print(tween)
 	tween.finished.connect(on_tween_finished)
 	tween.tween_property(self, "global_position", cur_pos, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 
@@ -46,8 +48,13 @@ func on_tween_finished() -> void:
 	player_detector.monitoring = true
 
 func _on_player_detector_body_entered(body: Node2D) -> void:
+	print(body)
 	if is_instance_valid(body) and body.has_method("pick_up_weapon"):
 		player_detector.set_deferred("monitoring", false)
 		body.pick_up_weapon(self)
 		position = Vector2.ZERO
 		is_on_floor = false
+	else:
+		print(tween)
+		player_detector.monitoring = true
+		tween.stop()
