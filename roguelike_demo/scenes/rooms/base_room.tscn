@@ -9,9 +9,9 @@ script = ExtResource("1_43ixu")
 
 [node name="Ground" type="TileMapLayer" parent="Tiles"]
 
-[node name="Wall" type="TileMapLayer" parent="Tiles"]
-
 [node name="Placement" type="TileMapLayer" parent="Tiles"]
+
+[node name="Wall" type="TileMapLayer" parent="Tiles"]
 
 [node name="EntryPoints" type="Node2D" parent="."]
 
@@ -22,3 +22,5 @@ script = ExtResource("1_43ixu")
 [node name="PlayerDetector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

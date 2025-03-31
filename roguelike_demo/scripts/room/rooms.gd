@@ -4,7 +4,7 @@ extends Node2D
 @export var tile_size: int = 16
 var spawn_rooms: Array[PackedScene] = [preload("res://scenes/rooms/spawn_room_1.tscn")]
 var middle_rooms: Array[PackedScene] = [preload("res://scenes/rooms/room_1.tscn")]
-var end_rooms: Array[PackedScene] = [preload("res://scenes/rooms/room_1.tscn")]
+var end_rooms: Array[PackedScene] = [preload("res://scenes/rooms/end_room_1.tscn")]
 
 var room_num: int = 3
 var pre_room: BaseRoom
@@ -37,10 +37,14 @@ func link_rooms(pre: BaseRoom, cur: BaseRoom) -> void:
 	var height = randi_range(0, 4) + 2
 	# 生成走廊
 	for y in height:
-		pre.ground.set_cell(exit_tile_pos + Vector2i(-2, -y), 0, Vector2i(4, 5))
 		pre.ground.set_cell(exit_tile_pos + Vector2i(-1, -y), 0, Vector2i(3, 1))
 		pre.ground.set_cell(exit_tile_pos + Vector2i(0, -y), 0, Vector2i(3, 1))
-		pre.ground.set_cell(exit_tile_pos + Vector2i(1, -y), 0, Vector2i(3, 5))
+		if y == height - 1:
+			pre.ground.set_cell(exit_tile_pos + Vector2i(-2, -y), 0, Vector2i(4, 4))
+			pre.ground.set_cell(exit_tile_pos + Vector2i(1, -y), 0, Vector2i(3, 4))
+		else:
+			pre.ground.set_cell(exit_tile_pos + Vector2i(-2, -y), 0, Vector2i(4, 5))
+			pre.ground.set_cell(exit_tile_pos + Vector2i(1, -y), 0, Vector2i(3, 5))
 	# 更新room位置，衔接room
 	var spawn_pos = cur.entry_points.get_node("Marker2D2").global_position
 	# 用spawn_pos的瓦片位置，不然使用spawn_pos的位置会导致衔接room会有偏移

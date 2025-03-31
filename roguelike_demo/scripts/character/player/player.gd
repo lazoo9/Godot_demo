@@ -23,7 +23,7 @@ var dust_scene: PackedScene = preload("res://scenes/effect/dust.tscn")
 signal hp_change(cur_hp: int, max_hp: int)                                                                                                                                                                                                             
 
 func _ready() -> void:
-	cur_hp = max_hp
+	cur_hp = PlayerData.max_hp
 	for w in weapons.get_children():
 		w.hide()
 	current_weapon = weapons.get_child(0)
@@ -36,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 		sprite_2d.flip_h = false
 	elif move_direction.x < 0 and not sprite_2d.flip_h:
 		sprite_2d.flip_h = true
-		
+	
 	#if dir.x > 0 and sprite_2d.flip_h:
 		#sprite_2d.flip_h = false
 	#elif dir.x < 0 and not sprite_2d.flip_h:
@@ -109,9 +109,11 @@ func take_damage(damage: int, knock_dirention: Vector2, knock_force: int) -> voi
 	velocity = Vector2.ZERO
 	cur_hp -= damage
 	if cur_hp > 0:
+		cancel_attack()
 		state_machine.set_state(state_machine.states.hurt)
 		velocity = knock_dirention * knock_force * 2
 	else:
+		cancel_attack()
 		state_machine.set_state(state_machine.states.death)
 		velocity = knock_dirention * knock_force * 2
 

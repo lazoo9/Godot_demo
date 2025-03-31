@@ -14,7 +14,7 @@ var enemy_scene: PackedScene = preload("res://scenes/character/enemy/flying_crea
 @export var enemy_num: int = 2
 
 func _ready() -> void:
-	enemy_num = enemy_spawn_points.get_children().size()
+	enemy_num = enemy_spawn_points.get_child_count()
 	if enemy_num == 0:
 		open_doors()
 
@@ -44,10 +44,10 @@ func enemy_spawn(pos: Vector2) -> void:
 func _on_player_detector_body_entered(body: Node2D) -> void:
 	if body is Player:
 		if enemy_num > 0:
-			close_entrance()
 			spawn_enemies()
 		else:
 			open_doors()
+		close_entrance()
 	player_detector.queue_free()
 
 func on_enemy_tree_exit() -> void:

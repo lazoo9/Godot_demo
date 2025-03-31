@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Game="*res://scripts/global/game.gd"
+SceneTransition="*res://scenes/global/scene_transition.tscn"
+PlayerData="*res://scripts/global/player_data.gd"
 
 [display]
 

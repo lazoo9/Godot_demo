@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://biq1jatd3kcrs"]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://biq1jatd3kcrs"]
 
 [ext_resource type="Texture2D" uid="uid://m8s3g5l4dayc" path="res://assets/full tilemap.png" id="1_4t6dm"]
+[ext_resource type="PackedScene" uid="uid://buuml7t3f0qkk" path="res://scenes/door/downstairs.tscn" id="2_kyx14"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sugp2"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -15,6 +16,7 @@ texture = ExtResource("1_4t6dm")
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, -8, 5, -8, 5, 6, -6, 6)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:0/0 = 0
 4:0/0 = 0
 0:1/0 = 0
@@ -57,6 +59,7 @@ texture = ExtResource("1_4t6dm")
 1:6/0 = 0
 1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2, 8, 2, 8, 8, -8, 8)
 1:7/0 = 0
+1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -4, -8, -4, 0, 8, 0, 8, 8, -8, 8)
 2:7/0 = 0
 2:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.5, 8, 0.5, 8, 8, -8, 8)
 4:4/0 = 0
@@ -68,6 +71,7 @@ texture = ExtResource("1_4t6dm")
 5:6/0 = 0
 5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2, 8, 2, 8, 8, -8, 8)
 5:7/0 = 0
+5:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 4, -8, 4, 0, -8, 0, -8, 8, 8, 8)
 7:6/0 = 0
 8:6/0 = 0
 6:5/0 = 0
@@ -83,7 +87,11 @@ texture = ExtResource("1_4t6dm")
 6:4/0 = 0
 6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_s10dj"]
+scenes/1/scene = ExtResource("2_kyx14")
+
 [resource]
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_0wfyh")
+sources/1 = SubResource("TileSetScenesCollectionSource_s10dj")
