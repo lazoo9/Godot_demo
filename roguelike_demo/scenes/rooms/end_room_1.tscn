@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=4 uid="uid://je1jp4b2dptb"]
+[gd_scene load_steps=5 format=4 uid="uid://je1jp4b2dptb"]
 
 [ext_resource type="PackedScene" uid="uid://d2vib6cidr55y" path="res://scenes/rooms/base_room.tscn" id="1_gce5t"]
 [ext_resource type="TileSet" uid="uid://biq1jatd3kcrs" path="res://resource/tileset/main.tres" id="2_8f606"]
+[ext_resource type="PackedScene" uid="uid://de7jp8x6u6ce7" path="res://scenes/door/torch.tscn" id="3_l71sx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8f606"]
 size = Vector2(31, 2)
@@ -32,3 +33,6 @@ position = Vector2(239, 153)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" index="0"]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_8f606")
+
+[node name="Torch" parent="." index="5" instance=ExtResource("3_l71sx")]
+position = Vector2(152, 87)

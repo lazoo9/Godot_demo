@@ -39,10 +39,10 @@ func link_rooms(pre: BaseRoom, cur: BaseRoom) -> void:
 	for y in height:
 		pre.ground.set_cell(exit_tile_pos + Vector2i(-1, -y), 0, Vector2i(3, 1))
 		pre.ground.set_cell(exit_tile_pos + Vector2i(0, -y), 0, Vector2i(3, 1))
-		if y == height - 1:
+		if y == height:
 			pre.ground.set_cell(exit_tile_pos + Vector2i(-2, -y), 0, Vector2i(4, 4))
 			pre.ground.set_cell(exit_tile_pos + Vector2i(1, -y), 0, Vector2i(3, 4))
-		else:
+		elif y != 0:
 			pre.ground.set_cell(exit_tile_pos + Vector2i(-2, -y), 0, Vector2i(4, 5))
 			pre.ground.set_cell(exit_tile_pos + Vector2i(1, -y), 0, Vector2i(3, 5))
 	# 更新room位置，衔接room
