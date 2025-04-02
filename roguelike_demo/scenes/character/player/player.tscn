@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bm7te1dsx2ugr"]
+[gd_scene load_steps=14 format=3 uid="uid://bm7te1dsx2ugr"]
 
 [ext_resource type="PackedScene" uid="uid://d12b3iioijffy" path="res://scenes/character/character.tscn" id="1_h6tdw"]
 [ext_resource type="Script" uid="uid://bj5flkn2340w" path="res://scripts/character/player/player.gd" id="2_4ywt2"]
 [ext_resource type="Script" uid="uid://730x3ugdlfhl" path="res://scripts/character/player/play_state_machine.gd" id="3_apd2u"]
 [ext_resource type="Texture2D" uid="uid://j7pqw8ty3tnd" path="res://assets/heroes/knight/knight_idle_spritesheet.png" id="3_ucfoo"]
 [ext_resource type="Texture2D" uid="uid://dl0ovdan1rqu4" path="res://assets/heroes/knight/knight_run_spritesheet.png" id="4_apd2u"]
-[ext_resource type="PackedScene" uid="uid://c3tc8h0ix24h0" path="res://scenes/weapon/sword.tscn" id="5_hixpj"]
 [ext_resource type="Texture2D" uid="uid://cayrkf0r873gx" path="res://assets/effects (new)/enemy_afterdead_explosion_anim_spritesheet.png" id="9_i0j1t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ucfoo"]
@@ -319,9 +318,6 @@ texture = ExtResource("3_ucfoo")
 hframes = 6
 
 [node name="Weapons" type="Node2D" parent="Body" index="1"]
-
-[node name="Sword" parent="Body/Weapons" index="0" instance=ExtResource("5_hixpj")]
-is_on_floor = false
 
 [node name="AnimationPlayer" parent="." index="3"]
 libraries = {

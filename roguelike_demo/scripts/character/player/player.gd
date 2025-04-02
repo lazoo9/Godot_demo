@@ -23,11 +23,22 @@ var dust_scene: PackedScene = preload("res://scenes/effect/dust.tscn")
 signal hp_change(cur_hp: int, max_hp: int)                                                                                                                                                                                                             
 
 func _ready() -> void:
-	cur_hp = PlayerData.max_hp
-	for w in weapons.get_children():
-		w.hide()
-	current_weapon = weapons.get_child(0)
-	current_weapon.show()
+	Game.player = self
+	load_data()
+	#cur_hp = PlayerData.max_hp
+	#for w in PlayerData.weapons:
+		#var weapon = w.duplicate()
+		#weapon.hide()
+		#weapons.add_child(weapon)
+	#current_weapon = weapons.get_child(PlayerData.cur_weapon_index)
+	#current_weapon.show()
+	#cur_hp = PlayerData.max_hp
+	#for w in weapons.get_children():
+		#PlayerData.weapons.append(w.duplicate())
+		#w.hide()
+	#current_weapon = weapons.get_child(0)
+	#current_weapon.show()
+	#PlayerData.cur_weapon = 0
 
 func _physics_process(_delta: float) -> void:
 	super(_delta)
@@ -132,6 +143,26 @@ func spawn_dust() -> void:
 	dust.global_position = global_position + Vector2.DOWN * 4
 	dust.flip_h = sprite_2d.flip_h
 	get_tree().current_scene.add_child(dust)
+
+func save_data() -> void:
+	PlayerData.cur_hp = cur_hp
+	PlayerData.weapons.clear()
+	PlayerData.weapons.resize(weapons.get_child_count())
+	for i in weapons.get_child_count():
+		PlayerData.weapons[i] = weapons.get_child(i).duplicate()
+	PlayerData.cur_weapon_index = current_weapon.get_index()
+
+func load_data() -> void:
+	cur_hp = PlayerData.cur_hp
+	for w in weapons.get_children():
+		weapons.remove_child(w)
+		w.queue_free()
+	for w in PlayerData.weapons:
+		var weapon = w.duplicate()
+		weapon.hide()
+		weapons.add_child(weapon)
+	current_weapon = weapons.get_child(PlayerData.cur_weapon_index)
+	current_weapon.show()
 
 func _on_dust_timer_timeout() -> void:
 	spawn_dust()

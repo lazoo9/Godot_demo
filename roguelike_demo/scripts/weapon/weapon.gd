@@ -6,12 +6,11 @@ class_name Weapon
 @onready var hit_box: HitBox = $Node2D/Sprite2D/HitBox
 @onready var player_detector: Area2D = $PlayerDetector
 
-@export var is_on_floor: bool = true
+@export var is_on_floor: bool = false
 var tween: Tween
 
 func _ready() -> void:
-	if not is_on_floor:
-		player_detector.monitoring = false
+	pass
 
 func move(move_direction: Vector2) -> void:
 	hit_box.knock_direction = move_direction
@@ -47,20 +46,19 @@ func drop(cur_pos: Vector2) -> void:
 	tween.tween_property(self, "global_position", cur_pos, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 
 func on_tween_finished() -> void:
-	player_detector.monitoring = true
+	#player_detector.monitoring = true
+	is_on_floor = true
 
 func _on_player_detector_body_entered(body: Node2D) -> void:
 	print(body)
-	if is_instance_valid(body) and body.has_method("pick_up_weapon"):
-		player_detector.set_deferred("monitoring", false)
+	if is_instance_valid(body) and body.has_method("pick_up_weapon") and is_on_floor:
+		#player_detector.set_deferred("monitoring", false)
 		body.pick_up_weapon(self)
 		position = Vector2.ZERO
 		is_on_floor = false
 	else:
 		print(tween)
-		player_detector.monitoring = true
-		if not tween.is_valid():
-			print("invalid")
+		#player_detector.monitoring = true
 		if tween and tween.is_valid():
 			print("stop")
 			tween.stop()
