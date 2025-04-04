@@ -41,7 +41,6 @@ func drop(cur_pos: Vector2) -> void:
 	if tween and tween.is_valid():
 		tween.kill()
 	tween = create_tween().bind_node(self)
-	print(tween)
 	tween.finished.connect(on_tween_finished)
 	tween.tween_property(self, "global_position", cur_pos, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 
@@ -50,14 +49,12 @@ func on_tween_finished() -> void:
 	is_on_floor = true
 
 func _on_player_detector_body_entered(body: Node2D) -> void:
-	print(body)
 	if is_instance_valid(body) and body.has_method("pick_up_weapon") and is_on_floor:
 		#player_detector.set_deferred("monitoring", false)
 		body.pick_up_weapon(self)
 		position = Vector2.ZERO
 		is_on_floor = false
 	else:
-		print(tween)
 		#player_detector.monitoring = true
 		if tween and tween.is_valid():
 			print("stop")
