@@ -1,10 +1,12 @@
-[gd_resource type="TileSet" load_steps=28 format=3 uid="uid://biq1jatd3kcrs"]
+[gd_resource type="TileSet" load_steps=30 format=3 uid="uid://biq1jatd3kcrs"]
 
 [ext_resource type="Texture2D" uid="uid://m8s3g5l4dayc" path="res://assets/full tilemap.png" id="1_4t6dm"]
 [ext_resource type="PackedScene" uid="uid://buuml7t3f0qkk" path="res://scenes/door/downstairs.tscn" id="2_kyx14"]
-[ext_resource type="PackedScene" uid="uid://boa2f34gif5rt" path="res://scenes/door/door.tscn" id="3_bv5bf"]
 [ext_resource type="PackedScene" uid="uid://de7jp8x6u6ce7" path="res://scenes/door/torch.tscn" id="4_2djvl"]
 [ext_resource type="PackedScene" uid="uid://c5qn2ngelp0oa" path="res://scenes/trap/ground_sting.tscn" id="5_2djvl"]
+[ext_resource type="PackedScene" uid="uid://djfomd8cgfc7w" path="res://scenes/trap/knife_trap_up.tscn" id="5_nsjm4"]
+[ext_resource type="PackedScene" uid="uid://bxyqkekxf45qk" path="res://scenes/trap/knife_trap_left.tscn" id="6_aor33"]
+[ext_resource type="PackedScene" uid="uid://0b0gev8xbj0d" path="res://scenes/trap/knife_trap_right.tscn" id="7_7sx0i"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kyx14"]
 polygon = PackedVector2Array(-8, 1, 8, 1, 8, 8, -8, 8)
@@ -189,9 +191,11 @@ texture = ExtResource("1_4t6dm")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_s10dj"]
 scenes/1/scene = ExtResource("2_kyx14")
-scenes/2/scene = ExtResource("3_bv5bf")
 scenes/3/scene = ExtResource("4_2djvl")
 scenes/4/scene = ExtResource("5_2djvl")
+scenes/5/scene = ExtResource("5_nsjm4")
+scenes/6/scene = ExtResource("6_aor33")
+scenes/7/scene = ExtResource("7_7sx0i")
 
 [resource]
 occlusion_layer_0/light_mask = 1

@@ -6,13 +6,24 @@ var dir: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	super()
+	#if is_instance_valid(player):
+		#look_at(player.global_position)
+		#dir = global_position.direction_to(player.global_position)
+		#knock_direction = global_position.direction_to(player.global_position)
+
+func _physics_process(delta: float) -> void:
+	position += dir * speed * delta
+
+func look_player() -> void:
 	if is_instance_valid(player):
 		look_at(player.global_position)
 		dir = global_position.direction_to(player.global_position)
 		knock_direction = global_position.direction_to(player.global_position)
 
-func _physics_process(delta: float) -> void:
-	position += dir * speed * delta
+func look_other(pos: Vector2) -> void:
+	look_at(pos)
+	dir = pos
+	knock_direction = pos
 
 func on_body_entered(body: Node2D) -> void:
 	super(body)

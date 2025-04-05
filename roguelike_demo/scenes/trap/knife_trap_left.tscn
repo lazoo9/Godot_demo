@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxyqkekxf45qk"]
+
+[ext_resource type="Texture2D" uid="uid://bbaep1kj1l5bq" path="res://assets/tiles/floor/knife_trap.png" id="1_kojch"]
+[ext_resource type="Script" uid="uid://bgvlss0uwq55n" path="res://scripts/trap/knife_trap_left.gd" id="1_tiog5"]
+
+[node name="KnifeTrapLeft" type="Node2D"]
+script = ExtResource("1_tiog5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kojch")
+hframes = 3
+frame = 1
+
+[node name="ShootPosition" type="Marker2D" parent="."]
+
+[node name="ShootTimer" type="Timer" parent="."]
+autostart = true

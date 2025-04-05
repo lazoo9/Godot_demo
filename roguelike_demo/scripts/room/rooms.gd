@@ -3,10 +3,13 @@ extends Node2D
 @onready var player: Player = get_parent().get_node("Player")
 @export var tile_size: int = 16
 var spawn_rooms: Array[PackedScene] = [preload("res://scenes/rooms/spawn_room_1.tscn")]
-var middle_rooms: Array[PackedScene] = [preload("res://scenes/rooms/simple_room/simple_room_3.tscn")]
+var middle_rooms: Array[PackedScene] = [
+	preload("res://scenes/rooms/simple_room/simple_room_4.tscn"),
+	preload("res://scenes/rooms/simple_room/simple_room_4.tscn")
+]
 var end_rooms: Array[PackedScene] = [preload("res://scenes/rooms/end_room_1.tscn")]
 
-var room_num: int = 3
+var room_num: int = 4
 var pre_room: BaseRoom
 var cur_room: BaseRoom
 

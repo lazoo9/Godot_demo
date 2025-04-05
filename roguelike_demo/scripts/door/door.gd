@@ -7,4 +7,4 @@ func _ready() -> void:
 	animation_player.play("close")
 
 func open() -> void:
-	animation_player.play("open")
+	animation_player.call_deferred("play", "open")

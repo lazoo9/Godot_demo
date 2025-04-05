@@ -47,8 +47,9 @@ func chase() -> void:
 			shoot_timer.start()
 
 func throw_projectile() -> void:
-	var projectile = projectile_scene.instantiate()
+	var projectile = projectile_scene.instantiate() as ThrowableKnife
 	projectile.global_position = global_position
+	projectile.look_player()
 	get_tree().current_scene.add_child(projectile)
 
 func _on_shoot_timer_timeout() -> void:
