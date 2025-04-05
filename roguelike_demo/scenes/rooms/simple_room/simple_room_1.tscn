@@ -33,9 +33,6 @@ position = Vector2(144, 16)
 [node name="Marker2D" type="Marker2D" parent="EnemySpawnPoints" index="0"]
 position = Vector2(47, 64)
 
-[node name="Marker2D2" type="Marker2D" parent="EnemySpawnPoints" index="1"]
-position = Vector2(202, 53)
-
 [node name="PlayerDetector" parent="." index="4"]
 position = Vector2(175, 120)
 

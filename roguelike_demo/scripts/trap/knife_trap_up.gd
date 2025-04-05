@@ -12,5 +12,5 @@ func _on_shoot_timer_timeout() -> void:
 	var knife = knife_scene.instantiate() as ThrowableKnife
 	add_child(knife)
 	knife.global_position = shoot_position.global_position
-	knife.rotation = 90
+	knife.rotation_degrees = 90
 	knife.dir = Vector2.DOWN
