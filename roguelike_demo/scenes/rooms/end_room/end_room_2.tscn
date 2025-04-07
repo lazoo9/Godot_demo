@@ -32,5 +32,3 @@ position = Vector2(111, 104)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" index="0"]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_gxvio")
-
-[connection signal="body_entered" from="Tiles/Placement/Downstairs" to="Tiles/Placement/Downstairs" method="_on_body_entered"]

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ejdlb7gfur2n"]
+
+[ext_resource type="PackedScene" uid="uid://d2vib6cidr55y" path="res://scenes/rooms/base_room.tscn" id="1_m0i7x"]
+
+[node name="SlimeBossRoom" instance=ExtResource("1_m0i7x")]

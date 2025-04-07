@@ -9,7 +9,7 @@ func _ready() -> void:
 	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
 
 func _on_shoot_timer_timeout() -> void:
-	var knife = knife_scene.instantiate() as ThrowableKnife
+	var knife = knife_scene.instantiate() as Throwable
 	add_child(knife)
 	knife.global_position = shoot_position.global_position
 	knife.rotation_degrees = 0

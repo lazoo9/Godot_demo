@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://but2yy1frw1tm"]
+
+[ext_resource type="Script" uid="uid://dnukwppscl76q" path="res://scripts/character/enemy/throwable.gd" id="1_psvxq"]
+[ext_resource type="Texture2D" uid="uid://b4f4q67qetrft" path="res://assets/enemies/wizard/wizard.png" id="2_psvxq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_psvxq"]
+radius = 2.0
+
+[node name="MagicBall" type="Area2D"]
+script = ExtResource("1_psvxq")
+metadata/_custom_type_script = "uid://bpbcuy66iyp78"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_psvxq")
+hframes = 5
+vframes = 3
+frame = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_psvxq")

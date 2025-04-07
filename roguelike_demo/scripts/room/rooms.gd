@@ -4,7 +4,7 @@ extends Node2D
 @export var tile_size: int = 16
 var spawn_rooms: Array[PackedScene] = [
 	preload("res://scenes/rooms/spawn_room/spawn_room_1.tscn"),
-	preload("res://scenes/rooms/spawn_room/spawn_room_2.tscn")
+	preload("res://scenes/rooms/spawn_room/spawn_room_1.tscn")
 ]
 var middle_rooms: Array[PackedScene] = [
 	preload("res://scenes/rooms/simple_room/simple_room_1.tscn"),
@@ -17,7 +17,7 @@ var end_rooms: Array[PackedScene] = [
 	preload("res://scenes/rooms/end_room/end_room_2.tscn")
 ]
 
-var room_num: int = 2
+var room_num: int = 3
 var pre_room: BaseRoom
 var cur_room: BaseRoom
 
