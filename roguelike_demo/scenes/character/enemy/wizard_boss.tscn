@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://buqsqyyam8ctc"]
+[gd_scene load_steps=16 format=3 uid="uid://buqsqyyam8ctc"]
 
 [ext_resource type="PackedScene" uid="uid://bs2kif0m20erp" path="res://scenes/character/enemy/enemy.tscn" id="1_dip77"]
 [ext_resource type="Texture2D" uid="uid://b4f4q67qetrft" path="res://assets/enemies/wizard/wizard.png" id="2_53qf2"]
 [ext_resource type="Script" uid="uid://cha6cu32om2ka" path="res://scripts/character/enemy/wizard_boss.gd" id="2_500ao"]
 [ext_resource type="Script" uid="uid://divl7ub66s7n2" path="res://scripts/character/enemy/wizard_boss_state_machine.gd" id="3_2kmel"]
 [ext_resource type="Texture2D" uid="uid://cayrkf0r873gx" path="res://assets/effects (new)/enemy_afterdead_explosion_anim_spritesheet.png" id="3_cum14"]
+[ext_resource type="PackedScene" uid="uid://but2yy1frw1tm" path="res://scenes/character/enemy/magic_ball.tscn" id="6_g35ch"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_500ao"]
 radius = 6.0
@@ -71,6 +72,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_a7nu3"]
@@ -217,6 +230,18 @@ tracks/4/keys = {
 "args": [],
 "method": &"hide"
 }]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_g35ch"]
@@ -404,6 +429,18 @@ tracks/4/keys = {
 "method": &"transfer_show"
 }]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_rlsm0"]
 resource_name = "spell"
@@ -442,7 +479,12 @@ libraries = {
 
 [node name="TransferTimer" type="Timer" parent="." index="5"]
 wait_time = 4.0
-autostart = true
 
 [node name="SpellTimer" type="Timer" parent="." index="6"]
 wait_time = 2.0
+autostart = true
+
+[node name="BallSpawnPos" type="Marker2D" parent="." index="7"]
+position = Vector2(-6, -6)
+
+[node name="MagicBall" parent="BallSpawnPos" index="0" instance=ExtResource("6_g35ch")]

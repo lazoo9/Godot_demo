@@ -5,8 +5,8 @@ class_name Climb
 
 signal death
 
-func _ready() -> void:
-	super()
+func _physics_process(delta: float) -> void:
+	super(delta)
 	if player:
 		hit_box.knock_direction = global_position.direction_to(player.global_position)
 

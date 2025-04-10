@@ -30,9 +30,10 @@ func _physics_process(delta: float) -> void:
 func actor_set() -> void:
 	await get_tree().physics_frame
 	var player_node = get_tree().current_scene.get_node("Player")
-	navigation_agent_2d.target_position = player_node.global_position
-	navigation_agent_2d.path_postprocessing = NavigationPathQueryParameters2D.PATH_POSTPROCESSING_EDGECENTERED
-	player = player_node
+	if is_instance_valid(player_node):
+		navigation_agent_2d.target_position = player_node.global_position
+		navigation_agent_2d.path_postprocessing = NavigationPathQueryParameters2D.PATH_POSTPROCESSING_EDGECENTERED
+		player = player_node
 
 func chase() -> void:
 	var next_position = navigation_agent_2d.get_next_path_position()

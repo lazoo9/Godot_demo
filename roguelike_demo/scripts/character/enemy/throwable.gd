@@ -16,6 +16,10 @@ func to_player() -> void:
 		dir = global_position.direction_to(player.global_position)
 		knock_direction = global_position.direction_to(player.global_position)
 
+func set_dir(direction: Vector2) -> void:
+	dir = direction
+	knock_direction = direction
+
 func on_body_entered(body: Node2D) -> void:
 	super(body)
 	queue_free()

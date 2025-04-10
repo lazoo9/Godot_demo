@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://diwhk4rtrkkbf"]
+[gd_scene load_steps=5 format=4 uid="uid://diwhk4rtrkkbf"]
 
 [ext_resource type="PackedScene" uid="uid://d2vib6cidr55y" path="res://scenes/rooms/base_room.tscn" id="1_f77ug"]
 [ext_resource type="TileSet" uid="uid://biq1jatd3kcrs" path="res://resource/tileset/main.tres" id="2_j8oap"]
 [ext_resource type="Script" uid="uid://bswy251s1vvvh" path="res://scripts/room/wizard_boss_room.gd" id="2_x3x13"]
+[ext_resource type="PackedScene" uid="uid://bm7te1dsx2ugr" path="res://scenes/character/player/player.tscn" id="4_j0jbh"]
 
 [node name="WizardBossRoom" instance=ExtResource("1_f77ug")]
 script = ExtResource("2_x3x13")
@@ -27,3 +28,6 @@ position = Vector2(294, 87)
 
 [node name="Marker2D3" type="Marker2D" parent="StandPositions" index="2"]
 position = Vector2(200, 136)
+
+[node name="Player" parent="." index="6" instance=ExtResource("4_j0jbh")]
+position = Vector2(266, 141)

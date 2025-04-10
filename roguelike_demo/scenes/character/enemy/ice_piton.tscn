@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://esb7pyrif267"]
+
+[ext_resource type="Script" uid="uid://dnukwppscl76q" path="res://scripts/character/enemy/throwable.gd" id="1_lo80i"]
+[ext_resource type="Texture2D" uid="uid://b4f4q67qetrft" path="res://assets/enemies/wizard/wizard.png" id="2_lo80i"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lo80i"]
+radius = 1.0
+height = 6.0
+
+[node name="IcePiton" type="Area2D"]
+script = ExtResource("1_lo80i")
+metadata/_custom_type_script = "uid://bpbcuy66iyp78"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lo80i")
+hframes = 5
+vframes = 3
+frame = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_lo80i")
