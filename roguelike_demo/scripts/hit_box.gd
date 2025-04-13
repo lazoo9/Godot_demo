@@ -36,4 +36,7 @@ func on_timeout() -> void:
 		player_enter = false
 
 func take_damage(body: Node2D) -> void:
-	body.take_damage(damage, knock_direction, knock_force)
+	if body is WizardBoss:
+		body.take_damage(damage, Vector2.ZERO, 0)
+	else:
+		body.take_damage(damage, knock_direction, knock_force)

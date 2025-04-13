@@ -36,8 +36,9 @@ func enter_state(_pre_state: int, _cur_state: int) -> void:
 		states.jump:
 			animation_player.play("jump")
 		states.hurt:
-			animation_player.stop()
 			animation_player.play("hurt")
 		states.death:
-			animation_player.stop()
-			animation_player.play("death")
+			if animation_player.current_animation == "death":
+				return
+			else:
+				animation_player.play("death")

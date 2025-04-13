@@ -7,6 +7,9 @@
 radius = 2.0
 
 [node name="MagicBall" type="Area2D"]
+scale = Vector2(2.5, 2.5)
+collision_layer = 0
+collision_mask = 11
 script = ExtResource("1_psvxq")
 metadata/_custom_type_script = "uid://bpbcuy66iyp78"
 

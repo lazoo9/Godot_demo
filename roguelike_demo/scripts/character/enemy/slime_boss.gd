@@ -29,11 +29,13 @@ func split_smile() -> void:
 # 生成史莱姆
 func spawn_slime(direction: Vector2) -> void:
 	var slime = slime_scene.instantiate() as SlimeBoss
-	slime.global_position = global_position
+	slime.tree_exited.connect(get_parent().on_enemy_tree_exit)
+	slime.position = position
 	slime.scale = scale / 2
 	get_parent().add_child(slime)
 	slime.jump_timer.wait_time = jump_timer.wait_time - 0.5
 	slime.velocity += direction * 1500
 
 func _on_jump_timer_timeout() -> void:
-	state_machine.set_state(state_machine.states.jump)
+	if state_machine.cur_state == state_machine.states.idle:
+		state_machine.set_state(state_machine.states.jump)

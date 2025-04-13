@@ -7,10 +7,11 @@ var spawn_rooms: Array[PackedScene] = [
 	preload("res://scenes/rooms/spawn_room/spawn_room_1.tscn")
 ]
 var middle_rooms: Array[PackedScene] = [
-	preload("res://scenes/rooms/simple_room/simple_room_1.tscn"),
-	preload("res://scenes/rooms/simple_room/simple_room_2.tscn"),
-	preload("res://scenes/rooms/simple_room/simple_room_3.tscn"),
-	preload("res://scenes/rooms/simple_room/simple_room_4.tscn")
+	preload("res://scenes/rooms/boss_room/slime_boss_room.tscn")
+	#preload("res://scenes/rooms/simple_room/simple_room_1.tscn"),
+	#preload("res://scenes/rooms/simple_room/simple_room_2.tscn"),
+	#preload("res://scenes/rooms/simple_room/simple_room_3.tscn"),
+	#preload("res://scenes/rooms/simple_room/simple_room_4.tscn")
 ]
 var end_rooms: Array[PackedScene] = [
 	preload("res://scenes/rooms/end_room/end_room_1.tscn"),

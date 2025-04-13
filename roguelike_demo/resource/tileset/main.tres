@@ -1,8 +1,8 @@
 [gd_resource type="TileSet" load_steps=30 format=3 uid="uid://biq1jatd3kcrs"]
 
 [ext_resource type="Texture2D" uid="uid://m8s3g5l4dayc" path="res://assets/full tilemap.png" id="1_4t6dm"]
-[ext_resource type="PackedScene" uid="uid://buuml7t3f0qkk" path="res://scenes/door/downstairs.tscn" id="2_kyx14"]
-[ext_resource type="PackedScene" uid="uid://de7jp8x6u6ce7" path="res://scenes/door/torch.tscn" id="4_2djvl"]
+[ext_resource type="PackedScene" uid="uid://buuml7t3f0qkk" path="res://scenes/placement/downstairs.tscn" id="2_kyx14"]
+[ext_resource type="PackedScene" uid="uid://de7jp8x6u6ce7" path="res://scenes/placement/torch.tscn" id="4_2djvl"]
 [ext_resource type="PackedScene" uid="uid://c5qn2ngelp0oa" path="res://scenes/trap/ground_sting.tscn" id="5_2djvl"]
 [ext_resource type="PackedScene" uid="uid://djfomd8cgfc7w" path="res://scenes/trap/knife_trap_up.tscn" id="5_nsjm4"]
 [ext_resource type="PackedScene" uid="uid://bxyqkekxf45qk" path="res://scenes/trap/knife_trap_left.tscn" id="6_aor33"]

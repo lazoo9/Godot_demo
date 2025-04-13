@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d2vib6cidr55y" path="res://scenes/rooms/base_room.tscn" id="1_o1wmn"]
 [ext_resource type="TileSet" uid="uid://biq1jatd3kcrs" path="res://resource/tileset/main.tres" id="2_e41eh"]
-[ext_resource type="PackedScene" uid="uid://boa2f34gif5rt" path="res://scenes/door/door.tscn" id="3_p2a6j"]
+[ext_resource type="PackedScene" uid="uid://boa2f34gif5rt" path="res://scenes/placement/door.tscn" id="3_p2a6j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2a6j"]
 size = Vector2(33, 3)
