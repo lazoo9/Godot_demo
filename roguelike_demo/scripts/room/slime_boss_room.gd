@@ -6,7 +6,7 @@ func _ready() -> void:
 	super()
 
 func get_enemy_num(sc: Vector2) -> int:
-	return pow(2, sc.x / 2) - 1
+	return int(pow(2, sc.x / 2)) - 1
 
 func spawn_enemies() -> void:
 	for point in enemy_spawn_points.get_children():

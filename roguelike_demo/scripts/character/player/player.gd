@@ -20,7 +20,10 @@ var cur_hp: int = 0:
 var current_weapon: Weapon
 var dust_scene: PackedScene = preload("res://scenes/effect/dust.tscn")
 
-signal hp_change(cur_hp: int, max_hp: int)                                                                                                                                                                                                             
+signal hp_change(cur_hp: int, max_hp: int)         
+signal weapon_pick_up(weapon_index: int)         
+signal weapon_drop(weapon_index: int)
+signal weapon_switch(pre_weapon_index: int, next_weapon_index: int)                                                                                                                                                                                           
 
 func _ready() -> void:
 	Game.player = self
@@ -81,6 +84,7 @@ func get_input() -> void:
 # 切换武器
 func switch_weapon(dir: SWITCH_DIR) -> void:
 	var index = current_weapon.get_index()
+	var pre_index = index
 	if dir == SWITCH_DIR.UP:
 		index -= 1
 		if index < 0:
@@ -92,29 +96,51 @@ func switch_weapon(dir: SWITCH_DIR) -> void:
 	current_weapon.hide()
 	current_weapon = weapons.get_child(index)
 	current_weapon.show()
+	weapon_switch.emit(pre_index, index)
 
 # 拾取武器
 func pick_up_weapon(weapon: Weapon) -> void:
 	weapon.get_parent().call_deferred("remove_child", weapon)
 	weapons.call_deferred("add_child", weapon)
 	weapon.set_deferred("owner", self)
+	call_deferred("_pick_up_weapon", weapon)
+
+func _pick_up_weapon(weapon: Weapon) -> void:
 	current_weapon.hide()
 	current_weapon.cancel_attack()
+	var pre_index: int = current_weapon.get_index()
 	current_weapon = weapon
+	var index: int = current_weapon.get_index()
+	weapon_pick_up.emit(index)
+	weapon_switch.emit(pre_index, index)
 
 # 丢弃武器
 func drop_weapon() -> void:
 	if weapons.get_child_count() == 1:
 		return
 	var weapon = current_weapon
+	var pre_index = current_weapon.get_index()
 	switch_weapon(SWITCH_DIR.DOWN)
 	weapon.show()
-	weapons.remove_child(weapon)
-	get_parent().add_child(weapon)
-	weapon.owner = get_parent()
+	#weapons.remove_child(weapon)
+	weapons.call_deferred("remove_child", weapon)
+	#get_parent().add_child(weapon)
+	get_parent().call_deferred("add_child", weapon)
+	#weapon.owner = get_parent()
+	weapon.set_deferred("owner", get_parent())
+	call_deferred("_drop_weapon", weapon, pre_index)
+	#var drop_dir = global_position.direction_to(get_global_mouse_position())
+	#weapon.global_position = global_position
+	#weapon.drop(global_position + drop_dir * 50)
+	#weapon_drop.emit(pre_index)
+	#weapon_switch.emit(pre_index, pre_index - 1)
+
+func _drop_weapon(weapon: Weapon, pre_index: int) -> void:
 	var drop_dir = global_position.direction_to(get_global_mouse_position())
 	weapon.global_position = global_position
 	weapon.drop(global_position + drop_dir * 50)
+	weapon_drop.emit(pre_index)
+	weapon_switch.emit(pre_index, pre_index - 1)
 
 func take_damage(damage: int, knock_dirention: Vector2, knock_force: int) -> void:
 	velocity = Vector2.ZERO
@@ -157,12 +183,16 @@ func load_data() -> void:
 	for w in weapons.get_children():
 		weapons.remove_child(w)
 		w.queue_free()
+	var index: int = 0
 	for w in PlayerData.weapons:
 		var weapon = w.duplicate()
 		weapon.hide()
 		weapons.add_child(weapon)
+		weapon_pick_up.emit(index)
+		index += 1
 	current_weapon = weapons.get_child(PlayerData.cur_weapon_index)
 	current_weapon.show()
+	weapon_switch.emit(PlayerData.cur_weapon_index, PlayerData.cur_weapon_index)
 
 func _on_dust_timer_timeout() -> void:
 	spawn_dust()

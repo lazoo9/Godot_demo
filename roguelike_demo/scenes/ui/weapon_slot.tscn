@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://buwtuq0owlwut"]
+
+[ext_resource type="Texture2D" uid="uid://bqyfvruv143bl" path="res://assets/heroes/knight/Hammer.png" id="1_a3sf7"]
+[ext_resource type="Script" uid="uid://ciq8rwhlsar3v" path="res://scripts/ui/weapon_slot.gd" id="2_aolmy"]
+
+[node name="WeaponSlot" type="TextureRect"]
+custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("1_a3sf7")
+stretch_mode = 5
+script = ExtResource("2_aolmy")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+border_width = 2.0
+editor_only = false

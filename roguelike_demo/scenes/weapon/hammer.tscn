@@ -384,6 +384,7 @@ _data = {
 }
 
 [node name="Hammer" instance=ExtResource("1_2uhtp")]
+is_on_floor = true
 
 [node name="Sprite2D" parent="Node2D" index="0"]
 material = SubResource("ShaderMaterial_6xha3")
