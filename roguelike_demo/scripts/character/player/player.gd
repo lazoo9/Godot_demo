@@ -13,9 +13,11 @@ enum SWITCH_DIR {
 @onready var dust_timer: Timer = $DustTimer
 
 @export var max_hp: int = 4
-var cur_hp: int = 0:
+@export var cur_hp: int = 0:
 	set(value):
 		cur_hp = value
+		if cur_hp > max_hp:
+			cur_hp = max_hp
 		hp_change.emit(cur_hp, max_hp)
 var current_weapon: Weapon
 var dust_scene: PackedScene = preload("res://scenes/effect/dust.tscn")
