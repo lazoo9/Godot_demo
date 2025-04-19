@@ -6,19 +6,24 @@ var spawn_rooms: Array[PackedScene] = [
 	preload("res://scenes/rooms/spawn_room/spawn_room_1.tscn"),
 	#preload("res://scenes/rooms/spawn_room/spawn_room_2.tscn")
 ]
-var middle_rooms: Array[PackedScene] = [
+var middle_simple_rooms: Array[PackedScene] = [
 	#preload("res://scenes/rooms/boss_room/slime_boss_room.tscn")
-	#preload("res://scenes/rooms/simple_room/simple_room_1.tscn"),
+	preload("res://scenes/rooms/simple_room/simple_room_1.tscn"),
 	#preload("res://scenes/rooms/simple_room/simple_room_2.tscn"),
-	preload("res://scenes/rooms/simple_room/simple_room_3.tscn"),
+	#preload("res://scenes/rooms/simple_room/simple_room_3.tscn"),
 	#preload("res://scenes/rooms/simple_room/simple_room_4.tscn")
+]
+var middle_hard_rooms: Array[PackedScene] = [
+	preload("res://scenes/rooms/simple_room/simple_room_3.tscn"),
 ]
 var end_rooms: Array[PackedScene] = [
 	preload("res://scenes/rooms/end_room/end_room_1.tscn"),
 	preload("res://scenes/rooms/end_room/end_room_2.tscn")
 ]
+var slime_boss_room: PackedScene = preload("res://scenes/rooms/boss_room/slime_boss_room.tscn")
+var wizard_boss_room: PackedScene = preload("res://scenes/rooms/boss_room/wizard_boss_room.tscn")
 
-var room_num: int = 3
+var room_num: int = 5
 var pre_room: BaseRoom
 var cur_room: BaseRoom
 
@@ -26,21 +31,46 @@ func _ready() -> void:
 	generate_rooms()
 
 func generate_rooms() -> void:
-	for index in room_num:
-		if index == 0:
-			cur_room = spawn_rooms.pick_random().instantiate()
-			pre_room = cur_room
-			cur_room.global_position = global_position
-			player.global_position = cur_room.get_node("PlayerSpawnPoint").global_position
-			add_child(cur_room)
-		else:
-			if index == room_num-1:
-				cur_room = end_rooms.pick_random().instantiate()
+	if PlayerData.level <= 3:
+		# simple
+		for index in room_num:
+			if index == 0:
+				cur_room = spawn_rooms.pick_random().instantiate()
+				pre_room = cur_room
+				cur_room.global_position = global_position
+				player.global_position = cur_room.get_node("PlayerSpawnPoint").global_position
+				add_child(cur_room)
 			else:
-				cur_room = middle_rooms.pick_random().instantiate()
-			add_child(cur_room)
-			link_rooms(pre_room, cur_room)
-			pre_room = cur_room
+				if index == room_num - 1:
+					cur_room = end_rooms.pick_random().instantiate()
+				else:
+					if PlayerData.level == 3 and index == room_num - 2:
+						cur_room = slime_boss_room.instantiate()
+					else:
+						cur_room = middle_simple_rooms.pick_random().instantiate()
+				add_child(cur_room)
+				link_rooms(pre_room, cur_room)
+				pre_room = cur_room
+	else:
+		# hard
+		for index in room_num:
+			if index == 0:
+				cur_room = spawn_rooms.pick_random().instantiate()
+				pre_room = cur_room
+				cur_room.global_position = global_position
+				player.global_position = cur_room.get_node("PlayerSpawnPoint").global_position
+				add_child(cur_room)
+			else:
+				if index == room_num-1:
+					cur_room = end_rooms.pick_random().instantiate()
+				else:
+					if PlayerData.level == 5 and index == room_num - 2:
+						cur_room = wizard_boss_room.instantiate()
+					else:
+						cur_room = middle_simple_rooms.pick_random().instantiate()
+				add_child(cur_room)
+				link_rooms(pre_room, cur_room)
+				pre_room = cur_room
 
 func link_rooms(pre: BaseRoom, cur: BaseRoom) -> void:
 	var pre_door_pos = pre.doors.get_node("Door").global_position

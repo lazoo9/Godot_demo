@@ -11,6 +11,7 @@ enum SWITCH_DIR {
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var weapons: Node2D = $Body/Weapons
 @onready var dust_timer: Timer = $DustTimer
+@onready var camera_2d: Camera2D = $Camera2D
 
 @export var max_hp: int = 4
 @export var cur_hp: int = 0:
@@ -25,25 +26,12 @@ var dust_scene: PackedScene = preload("res://scenes/effect/dust.tscn")
 signal hp_change(cur_hp: int, max_hp: int)         
 signal weapon_pick_up(weapon_index: int)         
 signal weapon_drop(weapon_index: int)
-signal weapon_switch(pre_weapon_index: int, next_weapon_index: int)                                                                                                                                                                                           
+signal weapon_switch(pre_weapon_index: int, next_weapon_index: int)        
+signal death                                                                                                                                                                                   
 
 func _ready() -> void:
 	Game.player = self
 	load_data()
-	#cur_hp = PlayerData.max_hp
-	#for w in PlayerData.weapons:
-		#var weapon = w.duplicate()
-		#weapon.hide()
-		#weapons.add_child(weapon)
-	#current_weapon = weapons.get_child(PlayerData.cur_weapon_index)
-	#current_weapon.show()
-	#cur_hp = PlayerData.max_hp
-	#for w in weapons.get_children():
-		#PlayerData.weapons.append(w.duplicate())
-		#w.hide()
-	#current_weapon = weapons.get_child(0)
-	#current_weapon.show()
-	#PlayerData.cur_weapon = 0
 
 func _physics_process(_delta: float) -> void:
 	super(_delta)
@@ -153,6 +141,7 @@ func take_damage(damage: int, knock_dirention: Vector2, knock_force: int) -> voi
 		velocity = knock_dirention * knock_force * 2
 	else:
 		cancel_attack()
+		death.emit()
 		state_machine.set_state(state_machine.states.death)
 		velocity = knock_dirention * knock_force * 2
 

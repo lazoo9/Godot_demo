@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://d07mfhyua6njf"]
+[gd_scene load_steps=9 format=4 uid="uid://d07mfhyua6njf"]
 
 [ext_resource type="PackedScene" uid="uid://cw783gm41lj6h" path="res://scenes/rooms/rooms.tscn" id="1_o6xl0"]
 [ext_resource type="TileSet" uid="uid://biq1jatd3kcrs" path="res://resource/tileset/main.tres" id="1_tbgi4"]
+[ext_resource type="Script" uid="uid://cvvn1gyvm7m82" path="res://scripts/main.gd" id="1_tipki"]
 [ext_resource type="PackedScene" uid="uid://bm7te1dsx2ugr" path="res://scenes/character/player/player.tscn" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://ciy3uy0y7yyi6" path="res://assets/ui (new)/health_ui.png" id="4_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://b0lqlhxe6iwmn" path="res://assets/ui (new)/health_progress.png" id="5_tbgi4"]
@@ -9,6 +10,7 @@
 [ext_resource type="Script" uid="uid://b6jeylhyou7h" path="res://scripts/ui/weapon_inventory.gd" id="7_tipki"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_tipki")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -42,6 +44,34 @@ player = NodePath("../../Player")
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/WeaponInventory"]
 layout_mode = 2
 
+[node name="EndUI" type="MarginContainer" parent="UI"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -50.5
+offset_right = -3.0
+offset_bottom = 50.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/EndUI"]
+layout_mode = 2
+
+[node name="RestartGame" type="Button" parent="UI/EndUI/VBoxContainer"]
+layout_mode = 2
+text = "从头再来"
+
+[node name="ReturnMainUI" type="Button" parent="UI/EndUI/VBoxContainer"]
+layout_mode = 2
+text = "返回主菜单"
+
+[node name="ExitGame" type="Button" parent="UI/EndUI/VBoxContainer"]
+layout_mode = 2
+text = "退出游戏"
+
 [node name="Rooms" parent="." instance=ExtResource("1_o6xl0")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -51,4 +81,10 @@ tile_set = ExtResource("1_tbgi4")
 
 [node name="Player" parent="." instance=ExtResource("2_0wfyh")]
 position = Vector2(148, 199)
-cur_hp = 0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+
+[connection signal="pressed" from="UI/EndUI/VBoxContainer/RestartGame" to="." method="_on_restart_game_pressed"]
+[connection signal="pressed" from="UI/EndUI/VBoxContainer/ReturnMainUI" to="." method="_on_return_main_ui_pressed"]
+[connection signal="pressed" from="UI/EndUI/VBoxContainer/ExitGame" to="." method="_on_exit_game_pressed"]

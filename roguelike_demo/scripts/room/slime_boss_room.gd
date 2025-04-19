@@ -1,4 +1,5 @@
 extends BaseRoom
+class_name SlimeBossRoom
 
 var slime_boss_scene: PackedScene = preload("res://scenes/character/enemy/slime_boss.tscn")
 
