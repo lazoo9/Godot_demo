@@ -8,6 +8,7 @@ class_name Weapon
 @onready var sprite_2d: Sprite2D = $Node2D/Sprite2D
 @onready var pick_up_cool_timer: Timer = $PickUpCoolTimer
 
+@export var scene_path: String
 @export var is_on_floor: bool = false
 var tween: Tween
 

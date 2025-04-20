@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="roguelike_demo"
-run/main_scene="uid://d07mfhyua6njf"
+run/main_scene="uid://cklktwg7axo5e"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

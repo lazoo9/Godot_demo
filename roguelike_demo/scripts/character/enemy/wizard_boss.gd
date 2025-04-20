@@ -31,7 +31,10 @@ func transfer_show() -> void:
 func cast_magic_ball() -> void:
 	var ball = magic_ball_scene.instantiate() as Throwable
 	ball.position = ball_spawn_pos.position
-	ball.set_dir(ball_spawn_pos.global_position.direction_to(player.global_position))
+	if player:
+		ball.set_dir(ball_spawn_pos.global_position.direction_to(player.global_position))
+	else:
+		ball.set_dir(Vector2.RIGHT)
 	add_child(ball)
 
 func spawn_ice_piton() -> void:

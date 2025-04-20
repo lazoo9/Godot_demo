@@ -536,6 +536,7 @@ _data = {
 }
 
 [node name="Sword" instance=ExtResource("1_jm7kl")]
+scene_path = "res://scenes/weapon/sword.tscn"
 
 [node name="Sprite2D" parent="Node2D" index="0"]
 material = SubResource("ShaderMaterial_ihoul")

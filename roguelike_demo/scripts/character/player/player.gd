@@ -166,7 +166,7 @@ func save_data() -> void:
 	PlayerData.weapons.clear()
 	PlayerData.weapons.resize(weapons.get_child_count())
 	for i in weapons.get_child_count():
-		PlayerData.weapons[i] = weapons.get_child(i).duplicate()
+		PlayerData.weapons[i] = weapons.get_child(i).scene_path
 	PlayerData.cur_weapon_index = current_weapon.get_index()
 
 func load_data() -> void:
@@ -175,8 +175,8 @@ func load_data() -> void:
 		weapons.remove_child(w)
 		w.queue_free()
 	var index: int = 0
-	for w in PlayerData.weapons:
-		var weapon = w.duplicate()
+	for w_path in PlayerData.weapons:
+		var weapon = load(w_path).instantiate()
 		weapon.hide()
 		weapons.add_child(weapon)
 		weapon_pick_up.emit(index)

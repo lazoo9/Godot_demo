@@ -17,6 +17,8 @@ func switch_camera() -> void:
 func _on_player_death() -> void:
 	switch_camera()
 	end_ui.show()
+	PlayerData.reset()
+	PlayerData.save_to_file()
 
 func _on_exit_game_pressed() -> void:
 	get_tree().quit()
@@ -25,6 +27,5 @@ func _on_return_main_ui_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/ui/main_ui.tscn")
 
 func _on_restart_game_pressed() -> void:
-	PlayerData.clear_weapons()
 	PlayerData.reset()
 	SceneTransition.play_transition_for_main_ui()
