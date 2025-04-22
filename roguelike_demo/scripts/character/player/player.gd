@@ -183,7 +183,7 @@ func load_data() -> void:
 		index += 1
 	current_weapon = weapons.get_child(PlayerData.cur_weapon_index)
 	current_weapon.show()
-	weapon_switch.emit(PlayerData.cur_weapon_index, PlayerData.cur_weapon_index)
+	weapon_switch.emit(0, PlayerData.cur_weapon_index)
 
 func _on_dust_timer_timeout() -> void:
 	spawn_dust()

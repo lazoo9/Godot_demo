@@ -3,6 +3,9 @@ class_name  WeaponSlot
 
 @onready var reference_rect: ReferenceRect = $ReferenceRect
 
+func _ready() -> void:
+	deselect()
+
 func initialize(text: Texture2D) -> void:
 	self.texture = text
 
