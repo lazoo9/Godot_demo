@@ -3,11 +3,23 @@ extends Node2D
 @onready var player: Player = $Player
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var end_ui: MarginContainer = $UI/EndUI
+@onready var skill_tree: Control = $UI/SkillTree
+
+var skill_tree_open: bool = false
 
 func _ready() -> void:
 	end_ui.hide()
 	camera_2d.enabled = false
 	player.death.connect(_on_player_death)
+
+func _physics_process(_delta: float) -> void:
+	if Input.is_action_just_pressed("open_skill_tree"):
+		if skill_tree_open:
+			skill_tree.hide()
+			skill_tree_open = false
+		else:
+			skill_tree.show()
+			skill_tree_open = true
 
 func switch_camera() -> void:
 	camera_2d.global_position = player.camera_2d.global_position

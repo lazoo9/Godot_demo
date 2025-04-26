@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsxw6a6gwgxt"]
+
+[ext_resource type="PackedScene" uid="uid://ccbgjdopjsqb7" path="res://scenes/ui/skill_node.tscn" id="1_eiof6"]
+[ext_resource type="Script" uid="uid://v35j1j0g6d7u" path="res://scripts/ui/skill_tree.gd" id="1_lvhuv"]
+[ext_resource type="Resource" uid="uid://ckpb6tkyrr6bn" path="res://resource/skill/add_max_hp_1.tres" id="3_7j510"]
+[ext_resource type="Resource" uid="uid://cgjm0b46tddnw" path="res://resource/skill/add_max_hp_2.tres" id="4_7lr3a"]
+[ext_resource type="Resource" uid="uid://c8nbgv0vs0wng" path="res://resource/skill/add_max_hp_3.tres" id="5_k3ia8"]
+
+[node name="SkillTree" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lvhuv")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+offset_right = 480.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_right = 480.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SkillNode" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_eiof6")]
+layout_mode = 2
+skill_resource = ExtResource("3_7j510")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="SkillNode" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_eiof6")]
+layout_mode = 2
+skill_resource = ExtResource("4_7lr3a")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="SkillNode" parent="MarginContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_eiof6")]
+layout_mode = 2
+skill_resource = ExtResource("5_k3ia8")

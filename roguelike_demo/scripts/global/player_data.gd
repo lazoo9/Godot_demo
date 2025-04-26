@@ -7,6 +7,7 @@ var cur_hp: int = 0
 var weapons: Array = ["res://scenes/weapon/sword.tscn"]
 var cur_weapon_index: int = 0
 var level: int = 5
+var activated_skills: Array = []
 
 func _init() -> void:
 	cur_hp = max_hp
@@ -28,7 +29,8 @@ func to_dict() -> Dictionary:
 		"cur_hp" = cur_hp,
 		"weapons" = weapons,
 		"cur_weapon_index" = cur_weapon_index,
-		"level" = level
+		"level" = level,
+		"activated_skills" = activated_skills
 	}
 
 func from_dict(dict: Dictionary) -> void:
@@ -37,6 +39,7 @@ func from_dict(dict: Dictionary) -> void:
 	weapons = dict["weapons"]
 	cur_weapon_index = dict["cur_weapon_index"]
 	level = dict["level"]
+	activated_skills = dict["activated_skills"]
 
 func save_to_file() -> void:
 	var file = FileAccess.open(file_path, FileAccess.WRITE)

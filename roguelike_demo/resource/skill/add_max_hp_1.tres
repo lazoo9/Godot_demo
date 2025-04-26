@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillResource" load_steps=2 format=3 uid="uid://ckpb6tkyrr6bn"]
+
+[ext_resource type="Script" uid="uid://b45b1epyx71ux" path="res://scripts/resource/skill_resource.gd" id="1_pm0t7"]
+
+[resource]
+script = ExtResource("1_pm0t7")
+id = 1
+active = false
+effect_type = 0
+effect_value = 1
+cost = "1"
+description = "最大HP+1"
+required_skill = Array[ExtResource("1_pm0t7")]([])
+metadata/_custom_type_script = "uid://b45b1epyx71ux"

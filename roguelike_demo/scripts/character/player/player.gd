@@ -112,18 +112,10 @@ func drop_weapon() -> void:
 	var pre_index = current_weapon.get_index()
 	switch_weapon(SWITCH_DIR.DOWN)
 	weapon.show()
-	#weapons.remove_child(weapon)
 	weapons.call_deferred("remove_child", weapon)
-	#get_parent().add_child(weapon)
 	get_parent().call_deferred("add_child", weapon)
-	#weapon.owner = get_parent()
 	weapon.set_deferred("owner", get_parent())
 	call_deferred("_drop_weapon", weapon, pre_index)
-	#var drop_dir = global_position.direction_to(get_global_mouse_position())
-	#weapon.global_position = global_position
-	#weapon.drop(global_position + drop_dir * 50)
-	#weapon_drop.emit(pre_index)
-	#weapon_switch.emit(pre_index, pre_index - 1)
 
 func _drop_weapon(weapon: Weapon, pre_index: int) -> void:
 	var drop_dir = global_position.direction_to(get_global_mouse_position())

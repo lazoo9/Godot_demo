@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccbgjdopjsqb7"]
+
+[ext_resource type="Texture2D" uid="uid://b1yfqnbsymshm" path="res://icon.svg" id="1_p5awi"]
+[ext_resource type="Script" uid="uid://bfws2mcsl48po" path="res://scripts/ui/skill_node.gd" id="1_y65vx"]
+[ext_resource type="FontFile" uid="uid://rt7x3wrk162j" path="res://assets/fonts/SmileySans-Oblique.ttf" id="2_lfu7q"]
+
+[node name="SkillNode" type="MarginContainer"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 50.0
+script = ExtResource("1_y65vx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("2_lfu7q")
+theme_override_font_sizes/font_size = 8
+text = "+1 HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_p5awi")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[connection signal="pressed" from="VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
