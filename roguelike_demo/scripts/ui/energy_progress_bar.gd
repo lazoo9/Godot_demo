@@ -3,12 +3,12 @@ extends TextureProgressBar
 @export var player: Player
 
 func _ready() -> void:
-	player.hp_change.connect(on_hp_change)
+	player.energy_change.connect(_on_player_energy_change)
 	self.max_value = 1.0
 	self.step = 0.0
-	self.value = float(player.cur_hp) / float(PlayerData.max_hp)
+	self.value = player.cur_energy / PlayerData.max_energy
 
-func on_hp_change(cur_hp: int, max_hp: int) -> void:
-	var v = float(cur_hp) / float(max_hp)
+func _on_player_energy_change(cur_energy: float, max_energy: float) -> void:
+	var v = float(cur_energy) / float(max_energy)
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "value", v, 0.6).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)

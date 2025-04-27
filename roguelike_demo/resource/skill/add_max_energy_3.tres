@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SkillResource" load_steps=4 format=3 uid="uid://vu8w0ll8y8av"]
+
+[ext_resource type="Texture2D" uid="uid://c8cqsn05c6mxe" path="res://assets/skill_ui/skill_point_energy.png" id="1_83rad"]
+[ext_resource type="Script" uid="uid://b45b1epyx71ux" path="res://scripts/resource/skill_resource.gd" id="1_jnvla"]
+[ext_resource type="Resource" uid="uid://cgjm0b46tddnw" path="res://resource/skill/add_max_hp_2.tres" id="3_gudl0"]
+
+[resource]
+script = ExtResource("1_jnvla")
+id = 7
+active = false
+effect_type = 0
+effect_value = 2
+cost = "1"
+icon = ExtResource("1_83rad")
+description = "最大体力+2"
+required_skill = Array[ExtResource("1_jnvla")]([ExtResource("3_gudl0")])
+metadata/_custom_type_script = "uid://b45b1epyx71ux"

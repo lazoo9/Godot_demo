@@ -306,6 +306,8 @@ collision_layer = 2
 script = ExtResource("2_4ywt2")
 max_hp = 4
 cur_hp = 0
+cur_energy = 0.0
+energy_increase_rate = 0.3
 max_speed = 100
 
 [node name="StateMachine" parent="." index="0"]

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="SkillResource" load_steps=3 format=3 uid="uid://c8nbgv0vs0wng"]
+[gd_resource type="Resource" script_class="SkillResource" load_steps=4 format=3 uid="uid://c8nbgv0vs0wng"]
 
 [ext_resource type="Script" uid="uid://b45b1epyx71ux" path="res://scripts/resource/skill_resource.gd" id="1_bl71a"]
+[ext_resource type="Texture2D" uid="uid://dwx0muil8oou6" path="res://assets/skill_ui/skill_point_health.png" id="1_wn52d"]
 [ext_resource type="Resource" uid="uid://cgjm0b46tddnw" path="res://resource/skill/add_max_hp_2.tres" id="2_huywg"]
 
 [resource]
@@ -8,8 +9,9 @@ script = ExtResource("1_bl71a")
 id = 3
 active = false
 effect_type = 0
-effect_value = 1
+effect_value = 2
 cost = "1"
+icon = ExtResource("1_wn52d")
 description = "最大HP+2"
 required_skill = Array[ExtResource("1_bl71a")]([ExtResource("2_huywg")])
 metadata/_custom_type_script = "uid://b45b1epyx71ux"

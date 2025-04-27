@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillResource" load_steps=3 format=3 uid="uid://cmcv2q0omulad"]
+
+[ext_resource type="Script" uid="uid://b45b1epyx71ux" path="res://scripts/resource/skill_resource.gd" id="1_25f4o"]
+[ext_resource type="Texture2D" uid="uid://c8cqsn05c6mxe" path="res://assets/skill_ui/skill_point_energy.png" id="1_olnqu"]
+
+[resource]
+script = ExtResource("1_25f4o")
+id = 5
+active = false
+effect_type = 1
+effect_value = 1
+cost = "1"
+icon = ExtResource("1_olnqu")
+description = "最大体力+1"
+required_skill = Array[ExtResource("1_25f4o")]([])
+metadata/_custom_type_script = "uid://b45b1epyx71ux"

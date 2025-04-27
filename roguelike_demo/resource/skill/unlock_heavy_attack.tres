@@ -1,6 +1,8 @@
-[gd_resource type="Resource" script_class="SkillResource" load_steps=2 format=3 uid="uid://dakxira5n7pi6"]
+[gd_resource type="Resource" script_class="SkillResource" load_steps=4 format=3 uid="uid://dakxira5n7pi6"]
 
+[ext_resource type="Texture2D" uid="uid://bwolic0eehul6" path="res://assets/skill_ui/skill_point_heavy_attack.png" id="1_f6f7x"]
 [ext_resource type="Script" uid="uid://b45b1epyx71ux" path="res://scripts/resource/skill_resource.gd" id="1_hcbg7"]
+[ext_resource type="Resource" uid="uid://cmcv2q0omulad" path="res://resource/skill/add_max_energy_1.tres" id="3_plr2e"]
 
 [resource]
 script = ExtResource("1_hcbg7")
@@ -9,6 +11,7 @@ active = false
 effect_type = 2
 effect_value = 1
 cost = "2"
+icon = ExtResource("1_f6f7x")
 description = "解锁蓄力攻击"
-required_skill = Array[ExtResource("1_hcbg7")]([])
+required_skill = Array[ExtResource("1_hcbg7")]([ExtResource("3_plr2e")])
 metadata/_custom_type_script = "uid://b45b1epyx71ux"

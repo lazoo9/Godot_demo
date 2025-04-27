@@ -17,13 +17,21 @@ enum SWITCH_DIR {
 @export var cur_hp: int = 0:
 	set(value):
 		cur_hp = value
-		if cur_hp > max_hp:
-			cur_hp = max_hp
-		hp_change.emit(cur_hp, max_hp)
+		if cur_hp > PlayerData.max_hp:
+			cur_hp = PlayerData.max_hp
+		hp_change.emit(cur_hp, PlayerData.max_hp)
+@export var cur_energy: float = 0.0:
+	set(value):
+		cur_energy = value
+		if cur_energy > PlayerData.max_energy:
+			cur_energy = PlayerData.max_energy
+		energy_change.emit(cur_energy, PlayerData.max_energy)
+@export var energy_increase_rate: float = 0.3
 var current_weapon: Weapon
 var dust_scene: PackedScene = preload("res://scenes/effect/dust.tscn")
 
-signal hp_change(cur_hp: int, max_hp: int)         
+signal hp_change(cur_hp: int, max_hp: int)    
+signal energy_change(cur_energy: float, max_energy: float)     
 signal weapon_pick_up(weapon_index: int)         
 signal weapon_drop(weapon_index: int)
 signal weapon_switch(pre_weapon_index: int, next_weapon_index: int)        
@@ -40,7 +48,7 @@ func _physics_process(_delta: float) -> void:
 		sprite_2d.flip_h = false
 	elif move_direction.x < 0 and not sprite_2d.flip_h:
 		sprite_2d.flip_h = true
-	
+	cur_energy += energy_increase_rate
 	#if dir.x > 0 and sprite_2d.flip_h:
 		#sprite_2d.flip_h = false
 	#elif dir.x < 0 and not sprite_2d.flip_h:
@@ -155,6 +163,7 @@ func spawn_dust() -> void:
 
 func save_data() -> void:
 	PlayerData.cur_hp = cur_hp
+	PlayerData.cur_energy = cur_energy
 	PlayerData.weapons.clear()
 	PlayerData.weapons.resize(weapons.get_child_count())
 	for i in weapons.get_child_count():
@@ -163,6 +172,7 @@ func save_data() -> void:
 
 func load_data() -> void:
 	cur_hp = PlayerData.cur_hp
+	cur_energy = PlayerData.cur_energy
 	for w in weapons.get_children():
 		weapons.remove_child(w)
 		w.queue_free()
