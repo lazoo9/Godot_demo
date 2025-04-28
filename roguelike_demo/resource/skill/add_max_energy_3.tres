@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c8cqsn05c6mxe" path="res://assets/skill_ui/skill_point_energy.png" id="1_83rad"]
 [ext_resource type="Script" uid="uid://b45b1epyx71ux" path="res://scripts/resource/skill_resource.gd" id="1_jnvla"]
-[ext_resource type="Resource" uid="uid://cgjm0b46tddnw" path="res://resource/skill/add_max_hp_2.tres" id="3_gudl0"]
+[ext_resource type="Resource" uid="uid://dd7oy71qk0lls" path="res://resource/skill/add_max_energy_2.tres" id="3_gudl0"]
 
 [resource]
 script = ExtResource("1_jnvla")

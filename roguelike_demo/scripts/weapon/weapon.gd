@@ -10,6 +10,7 @@ class_name Weapon
 
 @export var scene_path: String
 @export var is_on_floor: bool = false
+@export var heavy_attack_cost_energy: float = 3.0
 var tween: Tween
 
 func _ready() -> void:
@@ -25,12 +26,20 @@ func move(move_direction: Vector2) -> void:
 
 func get_input() -> void:
 	if Input.is_action_just_pressed("attack") and not animation_player.is_playing():
-		animation_player.play("charge")
+		if PlayerData.can_heavy_attack:
+			animation_player.play("charge")
+		else:
+			animation_player.play("attack")
 	elif Input.is_action_just_released("attack"):
 		if animation_player.is_playing() and animation_player.current_animation == "charge":
 			animation_player.play("attack")
 		elif gpu_particles_2d.emitting:
-			animation_player.play("heavy_attack")
+			var player: Player = Game.player
+			if player.cur_energy < heavy_attack_cost_energy:
+				animation_player.play("attack")
+			else:
+				animation_player.play("heavy_attack")
+				player.cur_energy -= heavy_attack_cost_energy
 
 func cancel_attack() -> void:
 	animation_player.play("cancel_attack")

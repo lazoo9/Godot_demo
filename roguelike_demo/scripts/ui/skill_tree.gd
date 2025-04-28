@@ -2,11 +2,14 @@ extends Control
 
 @onready var panel: Panel = $Panel
 @onready var h_box_container: HBoxContainer = $MarginContainer/HBoxContainer
+@onready var texture_rect: TextureRect = $MarginContainer/MarginContainer/HBoxContainer/TextureRect
+@onready var point_num_label: Label = $MarginContainer/MarginContainer/HBoxContainer/PointNumLabel
 
 var skill_node_dict = {}
 
 func _ready() -> void:
 	panel.show_behind_parent = true
+	point_num_label.text = "X " + str(PlayerData.skill_point_num)
 	store_dict()
 	load_data()
 

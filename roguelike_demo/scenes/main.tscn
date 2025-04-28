@@ -99,7 +99,7 @@ tile_set = ExtResource("1_tbgi4")
 
 [node name="Player" parent="." instance=ExtResource("2_0wfyh")]
 position = Vector2(148, 199)
-cur_energy = 0.0
+energy_increase_rate = 0.01
 
 [node name="Camera2D" type="Camera2D" parent="."]
 enabled = false

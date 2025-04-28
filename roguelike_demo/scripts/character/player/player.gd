@@ -26,7 +26,7 @@ enum SWITCH_DIR {
 		if cur_energy > PlayerData.max_energy:
 			cur_energy = PlayerData.max_energy
 		energy_change.emit(cur_energy, PlayerData.max_energy)
-@export var energy_increase_rate: float = 0.3
+@export var energy_increase_rate: float = 0.01
 var current_weapon: Weapon
 var dust_scene: PackedScene = preload("res://scenes/effect/dust.tscn")
 

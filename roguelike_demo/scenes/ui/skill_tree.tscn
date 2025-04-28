@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsxw6a6gwgxt"]
+[gd_scene load_steps=11 format=3 uid="uid://dsxw6a6gwgxt"]
 
 [ext_resource type="PackedScene" uid="uid://ccbgjdopjsqb7" path="res://scenes/ui/skill_node.tscn" id="1_eiof6"]
 [ext_resource type="Script" uid="uid://v35j1j0g6d7u" path="res://scripts/ui/skill_tree.gd" id="1_lvhuv"]
 [ext_resource type="Resource" uid="uid://ckpb6tkyrr6bn" path="res://resource/skill/add_max_hp_1.tres" id="3_7j510"]
 [ext_resource type="Resource" uid="uid://cgjm0b46tddnw" path="res://resource/skill/add_max_hp_2.tres" id="4_7lr3a"]
+[ext_resource type="Resource" uid="uid://cmcv2q0omulad" path="res://resource/skill/add_max_energy_1.tres" id="4_k3ia8"]
 [ext_resource type="Resource" uid="uid://c8nbgv0vs0wng" path="res://resource/skill/add_max_hp_3.tres" id="5_k3ia8"]
+[ext_resource type="Resource" uid="uid://dd7oy71qk0lls" path="res://resource/skill/add_max_energy_2.tres" id="6_2ki4s"]
+[ext_resource type="Resource" uid="uid://dakxira5n7pi6" path="res://resource/skill/unlock_heavy_attack.tres" id="6_karle"]
+[ext_resource type="Resource" uid="uid://vu8w0ll8y8av" path="res://resource/skill/add_max_energy_3.tres" id="9_bmt6l"]
+[ext_resource type="Texture2D" uid="uid://u30y06pnaa33" path="res://assets/skill_ui/skill_point.png" id="10_bmt6l"]
 
 [node name="SkillTree" type="Control"]
 layout_mode = 3
@@ -28,33 +33,71 @@ offset_right = 480.0
 offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 60
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="SkillNode" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_eiof6")]
+[node name="HPSkillNode" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_eiof6")]
 layout_mode = 2
 skill_resource = ExtResource("3_7j510")
 
+[node name="EnergySkillNode" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_eiof6")]
+layout_mode = 2
+skill_resource = ExtResource("4_k3ia8")
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
 
-[node name="SkillNode" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_eiof6")]
+[node name="HPSkillNode" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_eiof6")]
 layout_mode = 2
 skill_resource = ExtResource("4_7lr3a")
 
+[node name="HeavyAttackSkillNode" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_eiof6")]
+layout_mode = 2
+skill_resource = ExtResource("6_karle")
+
+[node name="EnergySkillNode" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_eiof6")]
+layout_mode = 2
+skill_resource = ExtResource("6_2ki4s")
+
 [node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 106
+alignment = 1
 
-[node name="SkillNode" parent="MarginContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_eiof6")]
+[node name="HpSkillNode" parent="MarginContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_eiof6")]
 layout_mode = 2
 skill_resource = ExtResource("5_k3ia8")
+
+[node name="EnergySkillNode" parent="MarginContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_eiof6")]
+layout_mode = 2
+skill_resource = ExtResource("9_bmt6l")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("10_bmt6l")
+
+[node name="PointNumLabel" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "x 1"

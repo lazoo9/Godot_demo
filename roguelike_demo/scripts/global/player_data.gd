@@ -10,6 +10,8 @@ var weapons: Array = ["res://scenes/weapon/sword.tscn"]
 var cur_weapon_index: int = 0
 var level: int = 5
 var activated_skills: Array = []
+var can_heavy_attack: bool = true
+var skill_point_num: int = 999
 
 func _init() -> void:
 	cur_hp = max_hp
