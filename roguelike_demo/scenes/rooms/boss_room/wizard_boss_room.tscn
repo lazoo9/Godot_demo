@@ -55,3 +55,12 @@ position = Vector2(118, 166)
 
 [node name="Marker2D5" type="Marker2D" parent="StandPositions" index="4"]
 position = Vector2(297, 168)
+
+[node name="Marker2D" type="Marker2D" parent="ChestSpawnPoints" index="0"]
+position = Vector2(215, 90)
+
+[node name="Marker2D2" type="Marker2D" parent="ChestSpawnPoints" index="1"]
+position = Vector2(167, 136)
+
+[node name="Marker2D3" type="Marker2D" parent="ChestSpawnPoints" index="2"]
+position = Vector2(264, 137)

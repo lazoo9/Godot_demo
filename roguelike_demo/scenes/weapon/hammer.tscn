@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://cb6bbg8ae2r4c"]
+[gd_scene load_steps=17 format=3 uid="uid://cb6bbg8ae2r4c"]
 
 [ext_resource type="PackedScene" uid="uid://bqctvf6ji3ahv" path="res://scenes/weapon/weapon.tscn" id="1_2uhtp"]
+[ext_resource type="Script" uid="uid://c2t4e34rphei1" path="res://scripts/weapon/hammer.gd" id="2_1jupe"]
 [ext_resource type="Shader" uid="uid://bduug1bfy0mt8" path="res://scripts/shader/weapon_shader.gdshader" id="2_7js18"]
 [ext_resource type="Texture2D" uid="uid://bqyfvruv143bl" path="res://assets/heroes/knight/Hammer.png" id="2_otq8b"]
 [ext_resource type="Texture2D" uid="uid://cayrkf0r873gx" path="res://assets/effects (new)/enemy_afterdead_explosion_anim_spritesheet.png" id="4_6xha3"]
@@ -146,10 +147,22 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Slash/HitBox:monitoring")
+tracks/10/path = NodePath("Slash/SlashHitBox:monitoring")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Slash/SlashHitBox:monitorable")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -235,10 +248,22 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Slash/HitBox:monitoring")
+tracks/6/path = NodePath("Slash/SlashHitBox:monitoring")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Slash/SlashHitBox:monitorable")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -339,10 +364,22 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Slash/HitBox:monitoring")
+tracks/7/path = NodePath("Slash/SlashHitBox:monitoring")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Slash/SlashHitBox:monitorable")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -415,10 +452,22 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Slash/HitBox:monitoring")
+tracks/5/path = NodePath("Slash/SlashHitBox:monitoring")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Slash/SlashHitBox:monitorable")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -540,10 +589,22 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Slash/HitBox:monitoring")
+tracks/9/path = NodePath("Slash/SlashHitBox:monitoring")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Slash/SlashHitBox:monitorable")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
@@ -560,6 +621,7 @@ _data = {
 }
 
 [node name="Hammer" instance=ExtResource("1_2uhtp")]
+script = ExtResource("2_1jupe")
 scene_path = "res://scenes/weapon/hammer.tscn"
 
 [node name="Sprite2D" parent="Node2D" index="0"]
@@ -583,15 +645,16 @@ scale = Vector2(2, 2)
 texture = ExtResource("4_6xha3")
 hframes = 4
 
-[node name="HitBox" type="Area2D" parent="Slash" index="0"]
+[node name="SlashHitBox" type="Area2D" parent="Slash" index="0"]
 collision_layer = 8
 collision_mask = 5
 monitoring = false
+monitorable = false
 script = ExtResource("5_htgfj")
 knock_force = 50
 metadata/_custom_type_script = "uid://bpbcuy66iyp78"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Slash/HitBox" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slash/SlashHitBox" index="0"]
 shape = SubResource("CircleShape2D_1jupe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" index="0"]

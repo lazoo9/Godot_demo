@@ -39,3 +39,6 @@ position = Vector2(175, 120)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" index="0"]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_pu0ve")
+
+[node name="Marker2D" type="Marker2D" parent="ChestSpawnPoints" index="0"]
+position = Vector2(184, 56)

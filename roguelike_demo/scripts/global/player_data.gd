@@ -6,7 +6,7 @@ var max_hp: int = 4
 var cur_hp: int = 0
 var max_energy: float = 2.0
 var cur_energy: float = 0.0
-var weapons: Array = ["res://scenes/weapon/hammer.tscn"]
+var weapons: Array = ["res://scenes/weapon/sword_2.tscn"]
 var cur_weapon_index: int = 0
 var level: int = 5
 var activated_skills: Array = []
@@ -28,7 +28,7 @@ func reset() -> void:
 	cur_hp = max_hp
 	max_energy = 2.0
 	cur_energy = max_energy
-	weapons = ["res://scenes/weapon/hammer.tscn"]
+	weapons = ["res://scenes/weapon/sword_2.tscn"]
 	cur_weapon_index = 0
 	level = 1
 	activated_skills = []
