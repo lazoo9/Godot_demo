@@ -790,6 +790,7 @@ _data = {
 
 [node name="Sword2" instance=ExtResource("1_qjpn4")]
 script = ExtResource("2_b0xi4")
+scene_path = "res://scenes/weapon/sword_2.tscn"
 
 [node name="Sprite2D" parent="Node2D" index="0"]
 material = SubResource("ShaderMaterial_pecj4")

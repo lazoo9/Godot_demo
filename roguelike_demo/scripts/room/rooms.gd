@@ -16,14 +16,17 @@ var middle_simple_rooms: Array[PackedScene] = [
 var middle_hard_rooms: Array[PackedScene] = [
 	preload("res://scenes/rooms/simple_room/simple_room_3.tscn"),
 ]
+var special_rooms: Array[PackedScene] = [
+	preload("res://scenes/rooms/special_room/special_room_1.tscn"),
+]
 var end_rooms: Array[PackedScene] = [
 	preload("res://scenes/rooms/end_room/end_room_1.tscn"),
-	preload("res://scenes/rooms/end_room/end_room_2.tscn")
+	preload("res://scenes/rooms/end_room/end_room_2.tscn"),
 ]
 var slime_boss_room: PackedScene = preload("res://scenes/rooms/boss_room/slime_boss_room.tscn")
 var wizard_boss_room: PackedScene = preload("res://scenes/rooms/boss_room/wizard_boss_room.tscn")
 
-var room_num: int = 5
+var room_num: int = 3
 var pre_room: BaseRoom
 var cur_room: BaseRoom
 
@@ -47,7 +50,10 @@ func generate_rooms() -> void:
 					if PlayerData.level == 3 and index == room_num - 2:
 						cur_room = slime_boss_room.instantiate()
 					else:
-						cur_room = middle_simple_rooms.pick_random().instantiate()
+						if PlayerData.level == 2 and index == room_num - 2:
+							cur_room = special_rooms.pick_random().instantiate()
+						else:
+							cur_room = middle_simple_rooms.pick_random().instantiate()
 				add_child(cur_room)
 				link_rooms(pre_room, cur_room)
 				pre_room = cur_room
@@ -67,7 +73,10 @@ func generate_rooms() -> void:
 					if PlayerData.level == 5 and index == room_num - 2:
 						cur_room = wizard_boss_room.instantiate()
 					else:
-						cur_room = middle_simple_rooms.pick_random().instantiate()
+						if PlayerData.level == 4 and index == room_num - 2:
+							cur_room = special_rooms.pick_random().instantiate()
+						else:
+							cur_room = middle_simple_rooms.pick_random().instantiate()
 				add_child(cur_room)
 				link_rooms(pre_room, cur_room)
 				pre_room = cur_room
