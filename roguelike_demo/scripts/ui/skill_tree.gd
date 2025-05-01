@@ -10,6 +10,7 @@ var skill_node_dict = {}
 func _ready() -> void:
 	panel.show_behind_parent = true
 	point_num_label.text = "X " + str(PlayerData.skill_point_num)
+	PlayerData.skill_point_num_changed.connect(_on_skill_point_num_changed)
 	store_dict()
 	load_data()
 
@@ -36,3 +37,6 @@ func _draw() -> void:
 			var end_pos: Vector2 = required_node.global_position + required_node.size / 2
 			var color: Color = Color.GRAY if required_node.skill_resource.active else Color.BLACK
 			draw_line(start_pos, end_pos, color, 3.0)
+
+func _on_skill_point_num_changed(num: int):
+	point_num_label.text = "X " + str(num)

@@ -6,12 +6,17 @@ var max_hp: int = 4
 var cur_hp: int = 0
 var max_energy: float = 2.0
 var cur_energy: float = 0.0
-var weapons: Array = ["res://scenes/weapon/sword.tscn"]
+var weapons: Array = ["res://scenes/weapon/hammer.tscn"]
 var cur_weapon_index: int = 0
 var level: int = 5
 var activated_skills: Array = []
-var can_heavy_attack: bool = true
-var skill_point_num: int = 999
+var can_heavy_attack: bool = false
+var skill_point_num: int = 0:
+	set(value):
+		skill_point_num = value
+		skill_point_num_changed.emit(skill_point_num)
+
+signal skill_point_num_changed(num: int)
 
 func _init() -> void:
 	cur_hp = max_hp
@@ -23,9 +28,12 @@ func reset() -> void:
 	cur_hp = max_hp
 	max_energy = 2.0
 	cur_energy = max_energy
-	weapons = ["res://scenes/weapon/sword.tscn"]
+	weapons = ["res://scenes/weapon/hammer.tscn"]
 	cur_weapon_index = 0
 	level = 1
+	activated_skills = []
+	can_heavy_attack = false
+	skill_point_num = 0
 
 func clear_weapons() -> void:
 	weapons.clear()
@@ -39,7 +47,9 @@ func to_dict() -> Dictionary:
 		"weapons" = weapons,
 		"cur_weapon_index" = cur_weapon_index,
 		"level" = level,
-		"activated_skills" = activated_skills
+		"activated_skills" = activated_skills,
+		"can_heavy_attack" = can_heavy_attack,
+		"skill_point_num" = skill_point_num
 	}
 
 func from_dict(dict: Dictionary) -> void:
@@ -51,6 +61,8 @@ func from_dict(dict: Dictionary) -> void:
 	cur_weapon_index = dict["cur_weapon_index"]
 	level = dict["level"]
 	activated_skills = dict["activated_skills"]
+	can_heavy_attack = dict["can_heavy_attack"]
+	skill_point_num = dict["skill_point_num"]
 
 func save_to_file() -> void:
 	var file = FileAccess.open(file_path, FileAccess.WRITE)

@@ -6,6 +6,7 @@ extends Node2D
 @onready var skill_tree: Control = $UI/SkillTree
 
 var skill_tree_open: bool = false
+var end_ui_show: bool = false
 
 func _ready() -> void:
 	end_ui.hide()
@@ -13,6 +14,13 @@ func _ready() -> void:
 	player.death.connect(_on_player_death)
 
 func _physics_process(_delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		if end_ui_show:
+			end_ui.hide()
+			end_ui_show = false
+		else:
+			end_ui.show()
+			end_ui_show = true
 	if Input.is_action_just_pressed("open_skill_tree"):
 		if skill_tree_open:
 			skill_tree.hide()
@@ -29,6 +37,7 @@ func switch_camera() -> void:
 func _on_player_death() -> void:
 	switch_camera()
 	end_ui.show()
+	end_ui_show = true
 	PlayerData.reset()
 	PlayerData.save_to_file()
 
