@@ -12,7 +12,7 @@ shader_parameter/active = false
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xmlwb"]
 radius = 3.99999
-height = 18.0001
+height = 20.0001
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_23vfj"]
 particle_flag_disable_z = true

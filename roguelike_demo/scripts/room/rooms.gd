@@ -83,7 +83,7 @@ func generate_rooms() -> void:
 						if PlayerData.level == 4 and index == room_num - 2:
 							cur_room = special_rooms.pick_random().instantiate()
 						else:
-							cur_room = middle_simple_rooms.pick_random().instantiate()
+							cur_room = middle_hard_rooms.pick_random().instantiate()
 				add_child(cur_room)
 				link_rooms(pre_room, cur_room)
 				pre_room = cur_room

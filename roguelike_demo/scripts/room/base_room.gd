@@ -35,7 +35,7 @@ func spawn_enemies() -> void:
 func spawn_chests() -> void:
 	for point in chest_spawn_points.get_children():
 		var chest = chest_scene.instantiate()
-		chest.global_position = ground.to_global(ground.map_to_local(ground.local_to_map(ground.to_local(point.global_position))))
+		chest.position = ground.map_to_local(ground.local_to_map(ground.to_local(point.global_position)))
 		call_deferred("add_child", chest)
 
 func close_entrance() -> void:

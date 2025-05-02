@@ -153,7 +153,6 @@ shape = SubResource("RectangleShape2D_mal3q")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("2_ryvqn")
 hframes = 10
 
