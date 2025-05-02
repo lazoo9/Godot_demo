@@ -3,6 +3,7 @@ class_name Goblin
 
 @onready var retrate_timer: Timer = $RetrateTimer
 @onready var shoot_timer: Timer = $ShootTimer
+@onready var aim_ray_cast_2d: RayCast2D = $AimRayCast2D
 
 @export var min_distance: float = 25.0
 @export var max_distance: float = 90.0
@@ -53,4 +54,6 @@ func throw_projectile() -> void:
 	projectile.to_player()
 
 func _on_shoot_timer_timeout() -> void:
-	throw_projectile()
+	aim_ray_cast_2d.target_position = player.global_position - global_position
+	if not aim_ray_cast_2d.is_colliding():
+		throw_projectile()

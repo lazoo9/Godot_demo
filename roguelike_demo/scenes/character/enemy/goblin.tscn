@@ -361,4 +361,6 @@ one_shot = true
 [node name="ShootTimer" type="Timer" parent="." index="6"]
 one_shot = true
 
+[node name="AimRayCast2D" type="RayCast2D" parent="." index="7"]
+
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

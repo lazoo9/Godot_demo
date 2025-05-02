@@ -557,7 +557,6 @@ material = SubResource("ShaderMaterial_ihoul")
 [node name="HitBox" parent="Node2D/Sprite2D" index="0"]
 monitoring = false
 monitorable = false
-damage = 5
 
 [node name="Slash" type="Sprite2D" parent="." index="1"]
 visible = false
