@@ -4,17 +4,24 @@ extends Node2D
 @export var tile_size: int = 16
 var spawn_rooms: Array[PackedScene] = [
 	preload("res://scenes/rooms/spawn_room/spawn_room_1.tscn"),
-	#preload("res://scenes/rooms/spawn_room/spawn_room_2.tscn")
+	preload("res://scenes/rooms/spawn_room/spawn_room_2.tscn"),
 ]
 var middle_simple_rooms: Array[PackedScene] = [
-	#preload("res://scenes/rooms/boss_room/slime_boss_room.tscn")
 	preload("res://scenes/rooms/simple_room/simple_room_1.tscn"),
-	#preload("res://scenes/rooms/simple_room/simple_room_2.tscn"),
-	#preload("res://scenes/rooms/simple_room/simple_room_3.tscn"),
-	#preload("res://scenes/rooms/simple_room/simple_room_4.tscn")
+	preload("res://scenes/rooms/simple_room/simple_room_2.tscn"),
+	preload("res://scenes/rooms/simple_room/simple_room_3.tscn"),
+	preload("res://scenes/rooms/simple_room/simple_room_4.tscn"),
+	preload("res://scenes/rooms/simple_room/simple_room_5.tscn"),
+	preload("res://scenes/rooms/simple_room/simple_room_6.tscn"),
+	preload("res://scenes/rooms/simple_room/simple_room_7.tscn"),
+	preload("res://scenes/rooms/simple_room/simple_room_8.tscn"),
 ]
 var middle_hard_rooms: Array[PackedScene] = [
-	preload("res://scenes/rooms/simple_room/simple_room_3.tscn"),
+	preload("res://scenes/rooms/hard_room/hard_room_1.tscn"),
+	preload("res://scenes/rooms/hard_room/hard_room_2.tscn"),
+	preload("res://scenes/rooms/hard_room/hard_room_3.tscn"),
+	preload("res://scenes/rooms/hard_room/hard_room_4.tscn"),
+	preload("res://scenes/rooms/hard_room/hard_room_5.tscn"),
 ]
 var special_rooms: Array[PackedScene] = [
 	preload("res://scenes/rooms/special_room/special_room_1.tscn"),
@@ -26,7 +33,7 @@ var end_rooms: Array[PackedScene] = [
 var slime_boss_room: PackedScene = preload("res://scenes/rooms/boss_room/slime_boss_room.tscn")
 var wizard_boss_room: PackedScene = preload("res://scenes/rooms/boss_room/wizard_boss_room.tscn")
 
-var room_num: int = 3
+var room_num: int = 5
 var pre_room: BaseRoom
 var cur_room: BaseRoom
 

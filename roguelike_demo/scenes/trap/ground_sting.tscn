@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://1onq8o6e0wun" path="res://assets/tiles/floor/spikes_spritesheet.png" id="2_ryvqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mal3q"]
-size = Vector2(16, 16)
+size = Vector2(14, 14)
 
 [sub_resource type="Animation" id="Animation_mal3q"]
 length = 0.001
@@ -153,6 +153,7 @@ shape = SubResource("RectangleShape2D_mal3q")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_ryvqn")
 hframes = 10
 

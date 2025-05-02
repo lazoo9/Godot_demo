@@ -66,6 +66,7 @@ color = Color(0.805634, 0.39219, 0.0899858, 1)
 energy = 2.0
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_mplln")
+texture_scale = 2.5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qbeb5")

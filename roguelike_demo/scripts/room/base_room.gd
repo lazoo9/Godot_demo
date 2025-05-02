@@ -11,7 +11,11 @@ class_name BaseRoom
 @onready var chest_spawn_points: Node2D = $ChestSpawnPoints
 
 var enemy_spawn_effect: PackedScene = preload("res://scenes/effect/enemy_spawn_effect.tscn")
-var enemy_scene: PackedScene = preload("res://scenes/character/enemy/flying_creature.tscn")
+var enemy_scenes: Array[PackedScene] = [
+	preload("res://scenes/character/enemy/flying_creature.tscn"),
+	preload("res://scenes/character/enemy/goblin.tscn"),
+	preload("res://scenes/character/enemy/slime.tscn"),
+]
 var chest_scene: PackedScene = preload("res://scenes/placement/chest.tscn")
 @export var enemy_num: int = 2
 
@@ -32,7 +36,7 @@ func spawn_chests() -> void:
 	for point in chest_spawn_points.get_children():
 		var chest = chest_scene.instantiate()
 		chest.global_position = ground.to_global(ground.map_to_local(ground.local_to_map(ground.to_local(point.global_position))))
-		parent.add_child(chest)
+		call_deferred("add_child", chest)
 
 func close_entrance() -> void:
 	for point in entry_points.get_children():
@@ -45,7 +49,7 @@ func open_doors() -> void:
 		door.open()
 
 func enemy_spawn(pos: Vector2) -> void:
-	var enemy = enemy_scene.instantiate() as Enemy
+	var enemy = enemy_scenes.pick_random().instantiate() as Enemy
 	enemy.global_position = pos
 	enemy.tree_exited.connect(on_enemy_tree_exit)
 	parent.add_child(enemy)
