@@ -90,6 +90,17 @@ text = "退出游戏"
 [node name="SkillTree" parent="UI" instance=ExtResource("6_85g3d")]
 visible = false
 
+[node name="LevelLabel" type="Label" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -27.0
+offset_right = 54.0
+offset_bottom = -4.0
+grow_vertical = 0
+text = "第 2 层"
+
 [node name="Rooms" parent="." instance=ExtResource("1_o6xl0")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -98,7 +109,6 @@ enabled = false
 tile_set = ExtResource("1_tbgi4")
 
 [node name="Player" parent="." instance=ExtResource("2_0wfyh")]
-position = Vector2(148, 199)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 enabled = false

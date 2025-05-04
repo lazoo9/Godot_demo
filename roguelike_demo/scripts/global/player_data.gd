@@ -8,7 +8,10 @@ var max_energy: float = 2.0
 var cur_energy: float = 0.0
 var weapons: Array = ["res://scenes/weapon/sword.tscn"]
 var cur_weapon_index: int = 0
-var level: int = 1
+var level: int = 1:
+	set(value):
+		level = value
+		level_changed.emit(level)
 var activated_skills: Array = []
 var can_heavy_attack: bool = false
 var skill_point_num: int = 0:
@@ -17,6 +20,7 @@ var skill_point_num: int = 0:
 		skill_point_num_changed.emit(skill_point_num)
 
 signal skill_point_num_changed(num: int)
+signal level_changed(level: int)
 
 func _init() -> void:
 	cur_hp = max_hp

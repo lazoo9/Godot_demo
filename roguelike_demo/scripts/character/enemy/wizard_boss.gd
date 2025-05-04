@@ -13,7 +13,9 @@ var stand_positions: Array[Vector2] = []
 var magic_ball_scene: PackedScene = preload("res://scenes/character/enemy/magic_ball.tscn")
 var ice_piton_scene: PackedScene = preload("res://scenes/character/enemy/ice_piton.tscn")
 var climb_scene: PackedScene = preload("res://scenes/character/enemy/climb.tscn")
-var parent
+var parent # 对应room中赋值
+
+signal wizard_dead
 
 func _ready() -> void:
 	super()
@@ -49,11 +51,11 @@ func spawn_ice_piton() -> void:
 func spawn_climb() -> void:
 	var room_node = find_parent("WizardBossRoom")
 	for i in 2:
+		parent.enemy_num += 1
 		var climb = climb_scene.instantiate() as Climb
 		climb.tree_exited.connect(parent.on_enemy_tree_exit)
 		var impulse_direction: Vector2 = Vector2.RIGHT.rotated(randf_range(0, 2*PI))
 		climb.position = position
-		parent.enemy_num += 1
 		climb.death.connect(_on_climb_death)
 		room_node.add_child(climb)
 		climb.velocity += impulse_direction * 800
@@ -76,6 +78,32 @@ func dead() -> void:
 	spell_timer.timeout.disconnect(_on_spell_timer_timeout)
 	queue_free()
 
+func stop_spell_timer() -> void:
+	spell_timer.paused = false
+
+func start_spell_timer() -> void:
+	spell_timer.paused = true
+
+func hide_logic() -> void:
+	spell_timer.paused = true
+	set_collision_layer_value(3, false)
+
+func show_logic() -> void:
+	spell_timer.paused = false
+	set_collision_layer_value(3, true)
+
+func take_damage(damage: int, knock_dirention: Vector2, knock_force: int) -> void:
+	cur_hp -= damage
+	if cur_hp > 0:
+		state_machine.set_state(state_machine.states.hurt)
+		velocity = knock_dirention * knock_force
+	else:
+		spell_timer.stop()
+		transfer_timer.stop()
+		state_machine.set_state(state_machine.states.death)
+		wizard_dead.emit()
+		velocity = knock_dirention * knock_force * 2
+
 func _on_climb_death() -> void:
 	parent.enemy_num -= 1
 
@@ -84,5 +112,4 @@ func _on_transfer_timer_timeout() -> void:
 		state_machine.set_state(state_machine.states.hide)
 
 func _on_spell_timer_timeout() -> void:
-	if state_machine.cur_state == state_machine.states.idle:
-		state_machine.set_state(state_machine.states.spell)
+	state_machine.set_state(state_machine.states.spell)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnorn74nivmm4"]
+[gd_scene load_steps=17 format=3 uid="uid://cnorn74nivmm4"]
 
 [ext_resource type="PackedScene" uid="uid://bqctvf6ji3ahv" path="res://scenes/weapon/weapon.tscn" id="1_qjpn4"]
 [ext_resource type="Script" uid="uid://g6t42kmrtfi0" path="res://scripts/weapon/sword_2.gd" id="2_b0xi4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d0dfjuwavc4yb" path="res://assets/effects (new)/slash_effect_anim_spritesheet.png" id="3_s7phj"]
 [ext_resource type="Texture2D" uid="uid://v8g4ffusf3k5" path="res://assets/heroes/knight/weapon_sword_2.png" id="4_jigei"]
 [ext_resource type="Script" uid="uid://bpbcuy66iyp78" path="res://scripts/hit_box.gd" id="4_pecj4"]
+[ext_resource type="AudioStream" uid="uid://bekwogicgcf3w" path="res://assets/sfx/07_human_atk_sword_1.wav" id="7_jigei"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pecj4"]
 resource_local_to_scene = true
@@ -866,3 +867,6 @@ shape = SubResource("CircleShape2D_s7phj")
 libraries = {
 &"": SubResource("AnimationLibrary_s7phj")
 }
+
+[node name="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("7_jigei")

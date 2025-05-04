@@ -66,4 +66,6 @@ collision_mask = 3
 
 [node name="PickUpCoolTimer" type="Timer" parent="."]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

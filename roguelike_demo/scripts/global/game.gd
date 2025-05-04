@@ -12,3 +12,9 @@ func save_data() -> void:
 
 func load_data() -> void:
 	player.load_data()
+
+func reload_weapon() -> void:
+	weapon_list = [
+		preload("res://scenes/weapon/hammer.tscn"),
+		preload("res://scenes/weapon/sword_2.tscn"),
+	]

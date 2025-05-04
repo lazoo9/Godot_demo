@@ -17,7 +17,7 @@ var enemy_scenes: Array[PackedScene] = [
 	preload("res://scenes/character/enemy/slime.tscn"),
 ]
 var chest_scene: PackedScene = preload("res://scenes/placement/chest.tscn")
-@export var enemy_num: int = 2
+@export var enemy_num: int = 0
 
 func _ready() -> void:
 	enemy_num = enemy_spawn_points.get_child_count()

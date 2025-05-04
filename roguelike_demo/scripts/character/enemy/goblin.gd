@@ -54,6 +54,7 @@ func throw_projectile() -> void:
 	projectile.to_player()
 
 func _on_shoot_timer_timeout() -> void:
-	aim_ray_cast_2d.target_position = player.global_position - global_position
-	if not aim_ray_cast_2d.is_colliding():
-		throw_projectile()
+	if player:
+		aim_ray_cast_2d.target_position = player.global_position - global_position
+		if not aim_ray_cast_2d.is_colliding():
+			throw_projectile()

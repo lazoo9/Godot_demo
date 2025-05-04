@@ -164,18 +164,6 @@ tracks/5/keys = {
 "method": &"dead"
 }]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CollisionShape2D:disabled")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_500ao"]
 resource_name = "hide"
@@ -243,17 +231,19 @@ tracks/4/keys = {
 "method": &"hide"
 }]
 }
-tracks/5/type = "value"
+tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [{
+"args": [],
+"method": &"hide_logic"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_g35ch"]
@@ -386,17 +376,19 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
-tracks/4/type = "value"
+tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape2D:disabled")
+tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"values": [{
+"args": [],
+"method": &"show_logic"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_2kmel"]
@@ -465,17 +457,19 @@ tracks/4/keys = {
 "method": &"transfer_show"
 }]
 }
-tracks/5/type = "value"
+tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.65),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show_logic"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_rlsm0"]
@@ -549,9 +543,12 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"show_logic"
+}, {
 "args": [],
 "method": &"cast_spell"
 }]
@@ -572,6 +569,7 @@ _data = {
 script = ExtResource("2_500ao")
 min_distance = 40.0
 max_distance = 130.0
+max_hp = 20
 
 [node name="StateMachine" parent="." index="0"]
 script = ExtResource("3_2kmel")
@@ -591,11 +589,11 @@ libraries = {
 }
 
 [node name="TransferTimer" type="Timer" parent="." index="5"]
-wait_time = 13.0
+wait_time = 6.0
 autostart = true
 
 [node name="SpellTimer" type="Timer" parent="." index="6"]
-wait_time = 2.0
+wait_time = 1.2
 autostart = true
 
 [node name="BallSpawnPos" type="Marker2D" parent="." index="7"]

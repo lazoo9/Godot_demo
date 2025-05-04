@@ -339,6 +339,7 @@ _data = {
 script = ExtResource("2_32l77")
 min_distance = 25.0
 max_distance = 90.0
+max_hp = 3
 
 [node name="StateMachine" parent="." index="0"]
 script = ExtResource("3_1xqjh")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cb6bbg8ae2r4c"]
+[gd_scene load_steps=18 format=3 uid="uid://cb6bbg8ae2r4c"]
 
 [ext_resource type="PackedScene" uid="uid://bqctvf6ji3ahv" path="res://scenes/weapon/weapon.tscn" id="1_2uhtp"]
 [ext_resource type="Script" uid="uid://c2t4e34rphei1" path="res://scripts/weapon/hammer.gd" id="2_1jupe"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bqyfvruv143bl" path="res://assets/heroes/knight/Hammer.png" id="2_otq8b"]
 [ext_resource type="Texture2D" uid="uid://cayrkf0r873gx" path="res://assets/effects (new)/enemy_afterdead_explosion_anim_spritesheet.png" id="4_6xha3"]
 [ext_resource type="Script" uid="uid://bpbcuy66iyp78" path="res://scripts/hit_box.gd" id="5_htgfj"]
+[ext_resource type="AudioStream" uid="uid://dvxnmxdvhm00a" path="res://assets/sfx/17_orc_atk_sword_3.wav" id="7_qmbr3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_htgfj"]
 resource_local_to_scene = true
@@ -665,3 +666,6 @@ shape = SubResource("CircleShape2D_otq8b")
 libraries = {
 &"": SubResource("AnimationLibrary_1jupe")
 }
+
+[node name="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("7_qmbr3")

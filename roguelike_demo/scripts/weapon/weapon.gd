@@ -7,6 +7,7 @@ class_name Weapon
 @onready var player_detector: Area2D = $PlayerDetector
 @onready var sprite_2d: Sprite2D = $Node2D/Sprite2D
 @onready var pick_up_cool_timer: Timer = $PickUpCoolTimer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 @export var scene_path: String
 @export var is_on_floor: bool = false
@@ -30,15 +31,19 @@ func get_input() -> void:
 			animation_player.play("charge")
 		else:
 			animation_player.play("attack")
+			play_sound()
 	elif Input.is_action_just_released("attack"):
 		if animation_player.is_playing() and animation_player.current_animation == "charge":
 			animation_player.play("attack")
+			play_sound()
 		elif gpu_particles_2d.emitting:
 			var player: Player = Game.player
 			if player.cur_energy < heavy_attack_cost_energy:
 				animation_player.play("attack")
+				play_sound()
 			else:
 				animation_player.play("heavy_attack")
+				play_sound()
 				player.cur_energy -= heavy_attack_cost_energy
 
 func cancel_attack() -> void:
@@ -56,6 +61,9 @@ func drop(cur_pos: Vector2) -> void:
 	tween.finished.connect(on_tween_finished)
 	print(self)
 	tween.tween_property(self, "global_position", cur_pos, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+
+func play_sound() -> void:
+	audio_stream_player.play()
 
 func on_tween_finished() -> void:
 	#player_detector.monitoring = true

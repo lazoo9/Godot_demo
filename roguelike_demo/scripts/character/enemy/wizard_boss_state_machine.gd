@@ -48,6 +48,7 @@ func enter_state(_pre_state: int, _cur_state: int) -> void:
 		states.hurt:
 			animation_player.play("hurt")
 		states.spell:
+			animation_player.stop()
 			animation_player.play("spell")
 		states.death:
 			animation_player.play("death")

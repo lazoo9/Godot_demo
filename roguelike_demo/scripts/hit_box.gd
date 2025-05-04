@@ -2,7 +2,8 @@ extends Area2D
 class_name HitBox
 
 @onready var collision_shape: CollisionShape2D = self.get_node("CollisionShape2D")
-@onready var player: Player = get_tree().current_scene.get_node("Player")
+#@onready var player: Player = get_tree().current_scene.get_node("Player")
+@onready var player: Player = Game.player
 
 @export var damage: int = 1
 @export var knock_force: int = 30
